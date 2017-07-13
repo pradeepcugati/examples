@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<title>::: Image Slider :::</title>
+	<style>
+		.slider{
+			position: relative;
+			width:200px;
+			height:200px;
+		}
+		.item{
+			position: absolute;
+			left:0;
+			top:0;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div class="slider">
+	<div class="item item1"><img src="images/density.gif"></div>
+	<div class="item item2"><img src="images/ortex.gif"></div>
+	<div class="item item3"><img src="images/slice.gif"></div>
+	<div class="item item4"><img src="images/Trp88.gif"></div>
+</div>
+	<button id="prev">Prev</button>
+	<button id="next">Next</button>
+
+<script>
+	var totalItems = document.getElementsByClassName('item');
+	var prevButton = document.getElementById('prev');
+	var nextButton = document.getElementById('next');
+	var Item = function(name){
+		this.name = name;
+		this.index = 0;
+		this.init = function(){
+			this.showCurrentItem(0);
+		}
+		this.loadNext = function(){
+			this.index = this.index + 1;
+			if(this.index >= totalItems.length){
+				this.index = 0;
+			}
+			this.showCurrentItem(this.index);
+		}
+
+		this.loadPrev = function(){
+			if(this.index <= 0){
+				this.index = totalItems.length;
+			}
+			this.index = this.index - 1;
+			this.showCurrentItem(this.index);
+		}
+		this.showCurrentItem = function(current){
+			for(var i=0; i < totalItems.length; i++){
+				totalItems[i].style.display = 'none';
+			}
+			
+			totalItems[current].style.display = 'block';
+		}
+
+		this.autoSlide = function(){
+			this.loadNext();
+		}
+	}
+
+	var item = new Item(0);
+	item.init();
+	setInterval(function(){
+		item.autoSlide();
+	},2000);
+
+	prevButton.addEventListener('click',showPrev)
+	nextButton.addEventListener('click',showNext)
+
+	function showPrev(){
+		item.loadPrev();
+	}
+
+	function showNext(){
+		item.loadNext();
+	}
+
+
+
+
+</script>
+</body>
+</html>
