@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		
+		.list{
+			width:100%;
+		}
+		.item{
+			//display:inline-block;
+			width:100%;
+			height:140px;
+			box-shadow: 0 1px 1px 0 rgba(0,0,0,0.25);
+			box-sizing: border-box;
+			padding:40px;
+			display: none;
+		}
+		.btn-more{
+			padding: 10px 20px;
+			background: #2B8612;
+			opacity: 0.4;
+			transition: 0.4s ease-in;
+			cursor: pointer;
+			margin: 0 auto;
+			text-align: center;
+			margin-left:45%;
+			margin-top:20px;
+			border-radius:20px;
+			border:0;
+			color:#FFF;
+		}
+		.btn-more:hover{
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<!-- https://codepen.io/elmahdim/pen/sGkvH?editors=1111 -->
+	<div class="block">
+		<div class="list">
+			<div class="item item1"> Item 1</div>
+			<div class="item item2"> Item 2</div>
+			<div class="item item3"> Item 3</div>
+			<div class="item item4"> Item 4</div>
+			<div class="item item5"> Item 5</div>
+			<div class="item item6"> Item 6</div>
+			<div class="item item7"> Item 7</div>
+			<div class="item item8"> Item 8</div>
+			<div class="item item9"> Item 9</div>
+			<div class="item item10"> Item 10</div>
+			<div class="item item11"> Item 11</div>
+			<div class="item item12"> Item 12</div>
+			<!-- <div class="item item13"> Item 13</div>
+			<div class="item item14"> Item 14</div>
+			<div class="item item15"> Item 15</div>
+			<div class="item item16"> Item 16</div>
+			<div class="item item17"> Item 17</div>
+			<div class="item item18"> Item 18</div>
+			<div class="item item19"> Item 19</div>
+			<div class="item item20"> Item 20</div>
+			<div class="item item21"> Item 21</div>
+			<div class="item item22"> Item 22</div>
+			<div class="item item23"> Item 23</div>
+			<div class="item item24"> Item 24</div>
+			<div class="item item25"> Item 25</div>
+			<div class="item item26"> Item 26</div>
+			<div class="item item27"> Item 27</div>
+			<div class="item item28"> Item 28</div>
+			<div class="item item29"> Item 29</div>
+			<div class="item item30"> Item 30</div>
+			<div class="item item31"> Item 31</div>
+			<div class="item item32"> Item 32</div>
+			<div class="item item33"> Item 33</div>
+			<div class="item item34"> Item 34</div>
+			<div class="item item35"> Item 35</div>
+			<div class="item item36"> Item 36</div>
+			<div class="item item37"> Item 37</div>
+			<div class="item item38"> Item 38</div>
+			<div class="item item39"> Item 39</div>
+			<div class="item item40"> Item 40</div> -->
+		</div>	
+
+		<button class="btn-more">Load More</button>
+	</div>
+
+	<script src="../jquery.min.js"></script>
+	<script>
+		(function(){
+			console.log('hi');
+			var start = 0, end = 3;
+			$('.item').slice(start,end).show();
+
+			var itemLength = $('.item').length;
+			console.log(itemLength)
+
+			$('.btn-more').on('click',function(){
+				start = start + 4;
+				end = end + 4;
+
+				if(end > itemLength){
+					var noMore = '<p class="show-if-no-more">There is no more to load</p>';
+
+					
+					if(! $('.block').find('.show-if-no-more').length > 0){
+						$(noMore).insertAfter('.btn-more');		
+					}
+				
+					
+				}
+				
+				$('.item').slice(start,end).slideDown();
+
+				$('body').animate({
+					scrollTop: $(this).offset().top
+				}, 1000);
+			})
+
+		})();
+	</script>
+</body>
+</html>
