@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.block{
+			width:100%;
+			display: inline-block;
+			margin: 0 auto;
+			height:100%;
+		}
+		.section{
+			width: 33%;
+			display: inline-block;
+			box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5);
+			min-height: 20%;
+		}
+		.noshow{
+			display: none
+		}
+		.show{
+			display: block;
+		}
+		.morecontent span{
+			display: none
+		}
+	</style>
+</head>
+<body>
+	<!-- http://viralpatel.net/blogs/dynamically-shortened-text-show-more-link-jquery/ -->
+	<div class="block">
+		<div class="section section1">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		</div>
+		<div class="section section2">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		</div>
+		<div class="section section3">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		</div>
+		<div class="section section4">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		</div>
+	</div>
+
+
+	<script src="../jquery.min.js"></script>
+	<script>
+		var SectionObj = function(){
+			this.start = 0;
+			this.end = 100;
+			this.demonit = "...";
+			
+			this.ellipText = "...";
+			this.btn = "<button>more</button>";
+			this.txt = "more";
+
+			/*this.withoutFilter = function(text){
+				if(this.txt == "more"){
+					return this.filterText(text);
+				} else{
+					return this.showFullText(text);
+				}
+
+			}
+			this.filterText = function(){
+				this.showInitText = text.substr(0,100);
+				this.remainingText = text.substr(100, text.length - 100);
+				var combined = this.showInitText + this.ellipText;
+				return combined;
+			}
+
+			this.showFullText = function(){
+				this.btn = "less";
+				this.showInitText = text.substr(0,100);
+				this.remainingText = text.substr(100, text.length - 100);
+				var combined2 = this.remainingText;
+				return combined2;
+			}*/
+
+
+
+		}
+
+		var sect1 = new SectionObj();
+
+		$('.section').each(function(){
+			/*var text = $(this.text);*/
+			
+			/*var html = sect1.filterText($(this).text());
+			$(this).html(html);*/
+			/*var self = this;
+			var t = $(self).text();
+			var html = sect1.withoutFilter(t)
+			$(self).html(html);*/
+			var content = $(this).text();
+			var initText = content.substr(0,100);
+			var remaningText = content.substr(100, content.length - 100);
+			var combinedText = initText + "<span class='morecontent'><span>"+remaningText+"</span><a href='javascript:void(0)' class='morelink'>more</a></span>";
+			$(this).html(combinedText);
+
+
+		})
+		$('a').on('click',function(){
+			if($(this).hasClass("less")) {
+	            $(this).removeClass("less");
+	            $(this).html("more");
+	            $(this).parent('.morecontent').find('span').hide();
+	        } else {
+	            $(this).addClass("less");
+	            $(this).html("less");
+	            $(this).parent('.morecontent').find('span').show();
+	        }
+
+		})
+
+
+
+
+		
+	</script>
+</body>
+</html>

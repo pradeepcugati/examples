@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.block{
+			width:100%;
+			display: inline-block;
+			margin: 0 auto;
+			height:100%;
+		}
+		.section{
+			width: 33%;
+			display: inline-block;
+			box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5);
+			min-height: 20%;
+		}
+		.noshow{
+			display: none
+		}
+		.show{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<!-- http://viralpatel.net/blogs/dynamically-shortened-text-show-more-link-jquery/ -->
+	<div class="block">
+		<div class="section section1">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		</div>
+		<div class="section section2">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		</div>
+		<div class="section section3">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		</div>
+		<div class="section section4">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+		</div>
+	</div>
+
+
+	<script src="../jquery.min.js"></script>
+	<script>
+		var SectionObj = function(){
+			this.start = 0;
+			this.end = 100;
+			this.demonit = "...";
+			
+			this.ellipText = "...";
+			
+			this.filterText = function(text){
+				this.showInitText = text.substr(0,100);
+				this.remainingText = text.substr(100, text.length - 100);
+				var combined = this.showInitText + this.ellipText + "<span class='noshow'>"+this.remainingText+"</span><button>more</button>";
+				return combined;
+			}
+
+			this.showFullText = function(text){
+				this.showInitText = text.substr(0,100);
+				this.remainingText = text.substr(100, text.length - 100);
+				var combined2 = this.showInitText + this.ellipText + "<span class='show'>"+this.remainingText+"</span><button>less</button>";
+				return combined2;
+			}
+
+
+
+		}
+
+		var sect1 = new SectionObj();
+
+		$('.section').each(function(){
+			/*var text = $(this.text);*/
+			var html = sect1.filterText($(this).text());
+			$(this).html(html);
+
+
+
+		})
+
+		$('button').on('click',function(){
+			var html2 = sect1.showFullText($(this).text());
+			$(this).html(html2)
+		})
+	</script>
+</body>
+</html>

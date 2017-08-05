@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.block{
+			width:100%;
+			display: inline-block;
+			margin: 0 auto;
+			height:100%;
+		}
+		.section{
+			width: 33%;
+			display: inline-block;
+			box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5);
+			min-height: 20%;
+		}
+		.noshow{
+			display: none
+		}
+		.show{
+			display: block;
+		}
+		.plzHide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<!-- http://viralpatel.net/blogs/dynamically-shortened-text-show-more-link-jquery/ -->
+	<div class="block">
+		<div class="section section1">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus1.</p>
+
+		</div>
+		<div class="section section2">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus2.</p>
+		</div>
+		<div class="section section3">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus3.</p>
+		</div>
+		<div class="section section4">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum felis fringilla neque sollicitudin, nec tincidunt dui pellentesque. Donec fringilla ut mi ut fringilla. Pellentesque et est libero. Phasellus fermentum arcu facilisis risus hendrerit malesuada. Cras leo neque, consequat id ante a, hendrerit facilisis quam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque ut arcu vel erat porta varius nec at ex. Phasellus gravida placerat augue, ac dictum mi volutpat vitae. Suspendisse sit amet congue nisl, ut vehicula libero. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus4.</p>
+		</div>
+	</div>
+
+
+	<script src="../jquery.min.js"></script>
+	<script>
+		var showLessMeth = function(totalText,count){
+			var initText = totalText.substr(0,100);
+			var remainingText = totalText.substr(100, totalText.length);
+			var count = count;
+			var combined = initText;
+			return combined;
+		}
+
+		var showMoreMeth = function(totalText,count){
+			var initText = totalText.substr(0,100);
+			var remainingText = totalText.substr(100, totalText.length);
+			var count = count;
+			var combined = initText + remainingText;
+			return combined;
+		}
+		var SectionObj = function(){
+			this.start = 0;
+			this.end = 100;
+			this.showMeth = function(combined,count, showLessMeth){
+				if(showLessMeth){
+					return showLessMeth(combined, count);
+				}
+			}
+			
+		}
+
+		var sect1 = new SectionObj();
+		var totalItems = $('.section');
+		for(var i=0; i < totalItems.length; i++){
+			var totalText = $(totalItems[i]).text();
+			var showL = sect1.showMeth(totalText,i,showLessMeth);
+			var sec = $('.section')[i];
+			//var btn = $("<button onclick='himeth(totalText,i)'>hi</button>");
+			$(sec).children('p').html(showL);
+
+		}
+		
+		
+
+	</script>
+</body>
+</html>
