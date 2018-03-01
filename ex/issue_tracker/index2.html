@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Issue Tracker</title>
+	<style>
+		body{ font-size:12px }
+		.task-item{
+			position: relative;
+			border-radius:10px;
+			background-color:rgba(255,210,0,0.4);
+		}
+		.task-item h2{
+			font-size:1rem;
+		}
+		.task-item h3{
+			font-size: 0.8rem;
+		}
+		.task-item .task-close{
+			position: absolute;
+			right:10px;
+			top:10px;
+		}
+		.task-item .task-delete{
+			position: absolute;
+			right:100px;
+			top:10px;
+		}
+		.task-item strong{
+			width:140px;
+			display: inline-block;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="block-addition">
+			<form action="#" class="form-task" id="formTask">
+				<input type="text" id="taskName" placeholder="Enter Task Name"><br>
+				<select name="" id="taskPriority">
+					<option value="low">Low</option>
+					<option value="medium" selected>Medium</option>
+					<option value="high">High</option>
+				</select>	
+				<br>
+				<input type="text" id="taskDescription" placeholder="Enter Task Description">
+				<button id="addTaskBtn" type="submit">Add this</button>
+			</form>
+		</div>
+		<div class="block-list-show" id="blockListShow">
+			
+		</div>
+
+	</div>
+	
+	<script src="jquery.min.js"></script>
+	<script>
+		function RandomGenerate(){}
+		RandomGenerate.prototype.randomNumber = Math.floor(Math.random() + (new Date()).valueOf());
+		
+		RandomGenerate.prototype.incrementor = function(){
+			return this.randomNumber++;
+		}
+		var n = new RandomGenerate();
+		console.log(n.incrementor())
+
+		var taskArr = [];
+		
+		function fetchCurrentObj(id){
+			var task_item = taskArr.find(function(task){
+				return task.id == id
+			})	
+			return task_item;
+		}
+
+		function statusClosed(id){
+			alert(id);
+			console.log(taskArr);
+			var task_item = fetchCurrentObj(id);
+			console.log(task_item)
+			//var task_id = task_item.id;
+			$('#task_'+task_item.id).find('.task-status span').html('closed');
+		}
+
+		function statusDelete(id){
+			alert(id);
+			var task_item = fetchCurrentObj(id);
+			$('.block-list-show').find('#task_'+task_item.id).remove();
+		}
+		/*var n = new RandomGenerate();
+		console.log(n.randomNumber());
+		console.log(n.incrementor())*/
+		$(document).ready(function(e){
+			$("#formTask").on("submit", function(e){
+				var taskName = $('#taskName').val();
+				var taskPriority = $('#taskPriority').val();
+				var taskDescription = $('#taskDescription').val();
+				var taskId = n.incrementor();
+				var taskStatus = "open";
+				var task = {
+					id: taskId,
+					name: taskName,
+					status: taskStatus,
+					description: taskDescription,
+					priority: taskPriority
+				}
+				taskArr.push(task);
+				var taskObj = '<h2><strong>Name:</strong>'+task.name+'</h2>'+
+							'<span class="task-status"><strong>status:</strong><span>'+task.status+'</span></span>'+
+							'<div class="task-description"><strong>Description:</strong>'+task.description+'</div>'+
+							'<h3><strong>Priority:</strong>'+task.priority+'</h3>'+
+							'<button class="task-close" onclick="statusClosed(\''+task.id+'\')">Close</button>'+
+							'<button class="task-delete" onclick="statusDelete(\''+task.id+'\')">Delete</button>';
+				var taskItem = $('<div />').attr({'class':'task-item','id':'task_'+task.id}).append(taskObj);
+				$('#blockListShow').append(taskItem)	
+			   e.preventDefault();
+			 })
+			
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>To-Do</title>
+</head>
+<body>
+
+    <div class="container">
+      <div id="container" class="col-md-8 col-md-offset-2">  </div>
+    </div>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+	var count = 0;
+	var AppTitle = () => {
+		return (
+			<div>
+				<h2>The Title is this</h2>
+			</div>
+		)
+	}
+	var AppForm = ({addTodo}) => {
+		let input;
+		return (
+			<div>	
+				<input ref={node => { input = node;}} />
+				<button onClick={() => {addTodo(input.value); input.value = "";}}>Add</button>
+			</div>
+		)
+	}
+	
+	const Todo = ({todo, remove}) => {
+	  return (<li>{todo.text} <span onClick={() => {remove(todo.id)}}>Close X</span></li>);
+	}
+
+	const AppList = ({todos, remove}) => {
+	  const todoNode = todos.map((todo, i) => {
+	    return (<Todo key={todo.id} todo={todo} remove={remove} />)
+	  });
+	  return (<ul>{todoNode}</ul>);
+	}
+
+	class TodoApp extends React.Component {
+		constructor(props){
+		    super(props);
+		    this.state = {
+		      data: []
+		    }
+		 }
+		 handleRemove(id){
+		 	var reminder = this.state.data.filter((item) => {
+		 		if(item.id !== id){
+		 			return item;
+		 		}
+		 	})	
+		 	this.setState({data: reminder});
+		 }
+		  // Add todo handler
+		addTodo(val){
+			count = count + 1;
+			console.log(count)
+			const obj = {text: val, id:count}
+			console.log(obj);
+
+			this.state.data.push(obj);
+			this.setState({data: this.state.data});
+		}
+	    render() {
+	    	var self = this;
+    		return (
+	    		<div>
+	    			<AppTitle />
+	    			<AppForm addTodo={this.addTodo.bind(this)} />
+	    			<AppList todos={this.state.data} remove={this.handleRemove.bind(this)} />
+	    		</div>
+    		);
+	    }
+	}
+	ReactDOM.render(
+	    <TodoApp />,
+	    document.getElementById('container')
+	);
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+@mixin btn-theme($btn-color,$radius) {
+	border-color: darken($btn-color, 20%);
+	background-color: $btn-color;
+	box-shadow: 0 0px 1px rgba(darken($btn-color,100%),1);
+	&:hover {
+	   background-color: darken($btn-color, 6%);
+	}
+	&:active {
+	   box-shadow: 0 0px 1px rgba(darken($btn-color,100%),1);
+	}
+}
+
+@mixin button-variant($color, $background, $border, $border-size:1px) {
+  color: lighten($color,10%);
+  background-color: $background;
+  border-color: $border;
+  border-width:$border-size;
+  border-style: solid;
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 25%);
+  }
+  &:hover {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color;
+    background-color: darken($background, 10%);
+        border-color: darken($border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: darken($background, 17%);
+          border-color: darken($border, 25%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: $background;
+          border-color: $border;
+    }
+  }
+ }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		
+		var factorial = function(num){
+			var recursive_val = 0;
+			/*if(num == 0){
+				return true;
+			}
+			else{*/
+				if(num == 0){
+					return 1;
+				}
+				return num * factorial(num - 1);	
+
+				//return recursive_val;
+			//}
+			
+
+			//console.log(recursive_val);
+			
+		}
+
+		var show_result = factorial(5);
+		console.log(show_result);
+
+	</script>
+</body>
+</html>

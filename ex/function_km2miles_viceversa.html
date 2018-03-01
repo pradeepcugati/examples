@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		var convertorMethod = function(n, type){
+			var conversionType = (type == "dollar") ?  50 : 1/50;
+			var specify = (type == "dollar") ? "rs" : "dollar";
+			return n * conversionType+" "+specify;
+		}
+
+		console.log(convertorMethod(20,'dollar'));
+		console.log(convertorMethod(50,'rs'));
+
+	</script>
+</body>
+</html>

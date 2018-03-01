@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	
+<!-- Hello Message -->
+<div id="app1">
+  <p>{{ message }}</p>
+</div>
+
+<!-- Tool Tip on Hover -->
+<div id="app2">
+  <span v-bind:title="message">
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+</div>
+
+<!-- Visibility based on condition -->
+<div id="app3">
+	<span v-if='seen1'>You see me1</span>
+	<span v-if='seen2'>You see me2</span>
+</div>
+
+<!-- Show List items -->
+<div id="app4">
+	<ul>
+		<li v-for="showname in names">{{showname.nam}}</li>
+	</ul>
+</div>
+
+<!-- Data in reverse -->
+<div id="app5">
+	<div>{{message}}</div>
+	<div></div>
+	<button v-on:click="reverseMethod">Click</button>
+</div>
+
+<!-- Data in reverse using function call -->
+<div id="app6">
+	<div>The Message is {{initMessage}}</div>
+	<div>The Reverse Message is {{reverseMessage}}</div>
+	<div>The Reverse Method is {{reverseMethod()}}</div>
+
+</div>
+
+
+<script src="vue.js"></script>
+<script>
+var a1 = "a1";
+var d1 = new Date().toLocaleString();
+var app1 = new Vue({
+  el: '#app1',
+  data: {
+    message: 'Hello Vue.js!'
+  }
+})
+
+var app2 = new Vue({
+	el: '#app2',
+	data:{
+		message: `You loaded this page on ${new Date().toLocaleString()}`
+	}
+})
+
+var app3 = new Vue({
+	el: '#app3',
+	data: {
+		seen1: false,
+		seen2: true
+	}
+})
+
+var app4 = new Vue({
+	el: '#app4',
+	data: {
+		names: [
+			{nam: "Pradeep"},
+			{nam: "Rajini"},
+			{nam: "Dhruvi"},
+			{nam: "Others"}
+		]
+	}
+})
+
+var app5 = new Vue({
+	el: '#app5',
+	data: {
+		message: "Mathematician is Awesome!"
+	},
+	methods:{
+		reverseMethod: function(){
+			this.message = this.message.split('').reverse().join('');
+		}
+	}
+})
+
+var app6 = new Vue({
+	el: '#app6',
+	data: {
+		initMessage: "Mathematician is Awesome!"
+	},
+	computed: {
+		reverseMessage: function(){
+			return this.initMessage.split('').reverse().join('');
+		}
+	},
+	methods: {
+		reverseMethod: function(){
+			//return this.initMessage.split('').reverse().join('');
+			return this.reverseMessage;
+		}
+	}
+})
+
+</script>
+</body>
+</html>

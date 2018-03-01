@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.square{
+		border:1px solid rgba(0,0,0,0.4);
+		border-radius: 4px;
+	}
+</style>
+<body>
+	
+	<div id="squares"></div>
+	<script>
+		var Square = function(id,size){
+			this.id = id;
+			this.size = size;
+			this.displayMeth = function(){
+				this.el = document.createElement('div');
+				this.el.style.width = this.size+"px";
+				this.el.style.height = this.size+"px";
+				this.el.setAttribute('id',this.id);
+				this.el.setAttribute('class','square')
+				this.el.innerHTML = "<p>"+this.id+"</p>";
+				document.getElementById('squares').appendChild(this.el);
+				//clickHandler(el);
+			}
+			this.biggerSizeMeth = function(size){
+				this.size += size;
+				this.el.style.width = this.size+"px";
+				this.el.style.height = this.size+"px";
+				return this;
+			}
+			this.bgcolorMeth = function(color){
+				this.el.style.backgroundColor = color;
+				return this;
+			}
+			
+		}
+
+		var sq1 = new Square('square',60);
+		sq1.displayMeth();
+		sq1.bgcolorMeth('orange');
+		sq1.el.onclick = function(){
+			sq1.bgcolorMeth('green').biggerSizeMeth(80);
+		}
+
+		
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/foundation.css">
+</head>
+
+<body>
+    <div class="off-canvas-wrap">
+        <div class="inner-wrap">
+            <header class="main-header sticky-menu custom-main-header">
+                <div class="row top-header custom-top-header">
+                    <div class="small-6 medium-2 large-3 logo-container columns custom-logo-container">
+                        <a href="http://pradeep.local.jiyo.com/">
+                          <img src="http://pradeep.local.jiyo.com/skin/frontend/intenso/jiyo/images/jiyo_marketplace_logo.png" alt="JIYO" title="JIYO"> 
+                        </a>
+                    </div>
+                    <div class="small-6 medium-3 medium-push-6 icons-for-small columns text-right">
+                        <a href="#" class="right-off-canvas-toggle show-for-small-only icon-main-menu"></a>
+                        <a href="http://pradeep.local.jiyo.com/checkout/cart/" class="hide-for-medium-up">
+                          <i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>
+                        </a>
+                        <a href="http://pradeep.local.jiyo.com/customer/account/" class="show-for-small icon-user"></a>
+                    </div>
+                    <div class="medium-8 large-8 large-push-1 columns custom-form-search-block">
+                        <form id="search_mini_form" action="http://pradeep.local.jiyo.com/catalogsearch/result/" method="get" class="searchautocomplete UI-SEARCHAUTOCOMPLETE" data-tip="Search entire store here..." data-url="//pradeep.local.jiyo.com/searchautocomplete/ajax/get/" data-minchars="3" data-delay="100">
+                            <div class="form-search">
+                                <!-- <label for="search"></label> -->
+                                <input id="search" type="text" autocomplete="off" name="q" value="" class="input-text placeholder UI-SEARCH UI-NAV-INPUT" maxlength="128">
+                                <!-- <button type="submit" title="" class="button search-button"><span><span></span></span></button> -->
+                                <button type="submit" title="Search" class="button search-button custom-icon"><span class="icon-in icon-search"></span></button>
+                                <div class="searchautocomplete-loader UI-LOADER">
+                                    <div id="g01"></div>
+                                    <div id="g02"></div>
+                                    <div id="g03"></div>
+                                    <div id="g04"></div>
+                                    <div id="g05"></div>
+                                    <div id="g06"></div>
+                                    <div id="g07"></div>
+                                    <div id="g08"></div>
+                                </div>
+                                <div style="display:none" id="search_autocomplete" class="UI-PLACEHOLDER search-autocomplete searchautocomplete-placeholder"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <nav class="top-bar right-off-canvas-menu main-nav horizontal" data-topbar="">
+                    <ul class="title-area">
+                        <li class="name show-for-small-only">
+                        </li>
+                        <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+                    </ul>
+                    <section class="top-bar-section clearfix  hover">
+                        <!-- Right Nav Section -->
+                        <ul class="right show-for-medium-up custom-login-cart">
+                            <li class="has-dropdown hide-for-small-only not-click">
+                                <a href="https://qa.jiyo.com/login?redirect_url=http%3A%2F%2Fpradeep.local.jiyo.com%2F" id="account_name">
+                <span class="sup truncate" id="sup truncate">
+                                      Hello. Sign in                  </span>
+                  Your Account                </a>
+                                <!-- <a href="https://qa.jiyo.com/login?redirect_url=http%3A%2F%2Fpradeep.local.jiyo.com%2F">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                  </a> -->
+                                <ul class="dropdown account-dropdown" style="display: none;">
+                                    <li class="title back js-generated">
+                                        <h5><a href="javascript:void(0)">Back</a></h5></li>
+                                    <li class="arrow-box">
+                                        <div class="bg-box">
+                                            <a href="https://qa.jiyo.com/login?redirect_url=http%3A%2F%2Fpradeep.local.jiyo.com%2F" class="button sign-in" id="signup">Sign in</a>
+                                            <p class="small">New customer? <a href="https://qa.jiyo.com/login?redirect_url=http%3A%2F%2Fpradeep.local.jiyo.com%2F">Start here</a>.</p>
+                                        </div>
+                                        <ul class="links-list">
+                                            <li class="first"><a href="http://pradeep.local.jiyo.com/customer/account/" title="Your Account">Your Account</a></li>
+                                            <li><a href="http://pradeep.local.jiyo.com/sales/order/history/" title="Your Orders">Your Orders</a></li>
+                                            <li class=" last"><a href="http://pradeep.local.jiyo.com/wishlist/" title="Your Wish List">Your Wish List</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="has-dropdown hide-for-small-only not-click">
+                                <a href="http://pradeep.local.jiyo.com/checkout/cart/" class="custom-icon " id="account_cart">
+                    <span aria-hidden="true" class="icon-cart1"></span>
+                    <span class="sup badge">
+                        0                                            </span>
+                                      </a>
+                                <!-- <a href="http://pradeep.local.jiyo.com/checkout/cart/">
+                    <i class="fa fa-shopping-cart icon-cart" aria-hidden="true"></i>
+                    <span class="product-count">
+                      0                    </span>
+                  </a> -->
+                                <ul class="dropdown cart-dropdown">
+                                    <li class="title back js-generated">
+                                        <h5><a href="javascript:void(0)">Back</a></h5></li>
+                                    <li class="arrow-box">
+                                        <div class="dropdown-title">Your Cart (0)<a href="http://pradeep.local.jiyo.com/checkout/cart/" class="icon-edit" title="Edit your Cart"><span class="hide">Edit Cart</span></a></div>
+                                        <p class="small cart-empty">Your shopping cart is currently empty.</p>
+                                        <div class="bg-box">
+                                            <p class="subtotal">
+                                                Subtotal:&nbsp;
+                                                <span class="price">
+                                            <span class="price">$0.00</span> </span>
+                                            </p>
+                                        </div>
+                                        <div class="sb-cart-dropdown">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                    </section>
+                </nav>
+                <div class="sticky-placeholder" style="display: none; height: 40px;"></div>
+            </header>
+        </div>
+    </div>
+</body>
+</html>

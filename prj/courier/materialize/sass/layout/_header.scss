@@ -1,0 +1,23 @@
+header{
+	nav{
+		.brand-logo{
+			color:$grey;
+			font-weight:200;
+		}
+		ul{
+			li{
+				a{
+					color: $white;
+					font-weight:300;
+				}
+				&.active{
+					background-color: $lightgrey;
+				}
+			}
+			
+		}
+		&.lightgreen{
+			background-color: darken($lightgreen,40%);
+		}
+	}
+}

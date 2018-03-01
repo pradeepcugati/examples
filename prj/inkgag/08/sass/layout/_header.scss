@@ -1,0 +1,91 @@
+header{
+	nav{
+		@include box-shadow(0px, 0px, 0px, 0px, #000);
+		.brand-logo{
+			color:$grey;
+			font-weight:200;
+		}
+		ul.custom-first{
+			.dropdown-content{
+				li{
+					a{
+						&:hover,&:focus,&:active,&.active{
+							color:$grey;
+							background-color: $white;
+						}
+					}
+				}
+			}
+			> li{
+				a{
+					color: lighten($grey,40%);
+				}
+
+				> a{
+					color: lighten($grey,40%);
+					font-weight:300;
+					border-top:2px solid $white;
+					@include transition(border-color 1s,color 0.5s);
+
+					&:hover,&:focus,&:active,&.active{
+						background-color: transparent;
+						color:$grey;
+						border-top:2px solid $grey;
+					}
+				}
+
+			}
+		}
+		ul.custom-second{
+			li{
+				a{
+					color: lighten($grey,40%);
+					font-weight:300;
+					//border-top:2px solid $white;
+					@include transition(color 1s);
+					&:hover,&:focus,&:active,&.active{
+						background-color: transparent;
+						color: $grey;
+						//border-top:2px solid $grey;
+					}
+				}
+			}
+		}
+		&.lightgreen{
+			background-color: darken($lightgreen,40%);
+			
+		}
+		nav{
+			@include box-shadow(0,0,0,0,#000);
+		}
+		i{
+			height: auto;
+			line-height:1.5em;
+		}
+
+		.input-field{
+			&.active{
+				width:200px;
+				input[type="search"]{
+					width:100px;
+					padding-right:50px;
+					~ i{
+						right:0;
+					}
+				}		
+			}
+			
+			label{
+				height: auto;
+				i{
+					height: auto;
+					line-height:1.5em;
+				}
+			}
+
+		}
+
+	}
+	
+	
+}

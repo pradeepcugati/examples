@@ -1,0 +1,22 @@
+.custom-category-listing{
+	.list-group{
+		border: 1px solid #eaeaea;
+		margin-bottom: 40px;
+		padding: 0 20px 30px 20px;
+
+		.filter-attribute-container{
+			h4{
+				font-size:1rem;
+				color: $grey;
+			}
+			ul{
+				border:0;
+				li{
+					border-bottom:0;
+					padding-left:0;
+					padding-right:0;
+				}
+			}
+		}
+	}	
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<div id="divName1"></div>
+
+<script>
+	window.onload = function(){
+		document.onclick = function(){
+			alert("document click");
+		}
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET","data/load_ajax.json");
+		xhr.onreadystatechange = function(resp){
+			console.log(resp);
+			var div = document.getElementById("divName1");
+			console.log(this);
+			if (this.readyState == this.DONE && this.status == 200) {
+				if (resp != null) {
+				div.innerHTML = this.responseText;
+				}
+				else {
+				div.innerHTML += "<br>Error: Problem getting data";
+				}
+				}
+			else {
+				div.innerHTML += "<br>Error: " + this.status;
+			}
+		}
+		xhr.send();
+	}
+
+	/*window.onload = function() {
+        document.onclick = function() {
+            alert("You clicked on the web page!");
+        }
+        var request = new XMLHttpRequest();
+        request.open("GET", "data/load_ajax.json");
+        request.onreadystatechange = function(response) {
+        	console.log(response);
+            var div = document.getElementById("div1");
+            if (this.readyState == this.DONE && this.status == 200) {
+                if (response != null) {
+                    div.innerHTML = this.responseText;
+                } else {
+                    div.innerHTML += "<br>Error: Problem getting data";
+                }
+            } else {
+                div.innerHTML += "<br>Error: " + this.status;
+            }
+        }
+        request.send();
+    }*/
+</script>
+
+
+</body>
+</html>

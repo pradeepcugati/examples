@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>To-Do</title>
+</head>
+<body>
+
+    <div class="container">
+      <div id="container" class="col-md-8 col-md-offset-2">  </div>
+    </div>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+	class MyComponent extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				color: 'blue'
+			}
+		}
+		handleClick(){
+			var color = (this.state.color == 'blue') ? 'orange' :  'blue';
+			this.setState({color: color});
+		}
+		render(){
+			var style = {
+				backgroundColor: this.state.color
+			}
+			return (
+				<div>
+					<span style={style}>The color is {this.state.color}</span>
+					<button onClick={this.handleClick.bind(this)}> Click</button>
+				</div>
+			)
+		}
+	}
+	ReactDOM.render(
+	    <MyComponent />,
+	    document.getElementById('container')
+	);
+</script>
+</body>
+</html>

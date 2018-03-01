@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	1. url is https://www.interviewcake.com/javascript-interview-questions
+	2. http://www.i-programmer.info/programming/javascript/1674-javascript-data-structures-stacks-queues-and-deques.html
+
+	<button id="btn-0">Button 1!</button>
+<button id="btn-1">Button 2!</button>
+<button id="btn-2">Button 3!</button>
+<button id="btn-3">Button 3!</button>
+
+
+<!-- <button id="btn-1">button 1</button>
+	<button id="btn-2">button 2</button>
+	<button id="btn-3">button 3</button>
+	<button id="btn-4">button 4</button> -->
+
+	<script>
+		/*============= functional scoping and hoisting*/
+		var text = 'outside';
+		function logIt(){
+		    console.log(text); // answer is undefined as this "var text" which gets hoisted before function and var text inside function is declared.
+		    var text = 'inside';
+		};
+		logIt();
+
+		/*=========================== variable closure */
+		var prizes = ['first','second','third','consolation'];
+		var prizelen = prizes.length;
+		for(var i=0; i< prizelen; i++){
+			document.getElementById(`btn-${i}`).onclick = function(i){
+				return function(){alert(prizes[i]);}
+			}(i);
+		}
+
+		/*var prizes = ['A Unicorn!', 'A Hug!', 'Fresh Laundry!'];
+    for (var btnNum = 0; btnNum < prizes.length; btnNum++) {
+        // for each of our buttons, when the user clicks it...
+        document.getElementById('btn-' + btnNum).onclick = function(frozenBtnNum){
+            return function() {
+                // tell her what she's won!
+                alert(prizes[frozenBtnNum]);
+            };
+        }(btnNum);  // LOOK! We're passing btnNum to our anonymous function here!
+    }*/
+
+    // Assignment for a and b
+    	function executeAB(){
+    		"use strict"; // see the result by commenting this line
+    		var a = b = 3;
+    		console.log(`Value of a is ${a} and b is ${b}`)	;
+    	}
+    	executeAB();
+    	
+
+
+	</script>
+</body>
+</html>

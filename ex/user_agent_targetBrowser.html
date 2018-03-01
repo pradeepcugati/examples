@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="http://site.com" id="fav" onclick="window.external.AddFavorite(this.href,this.innerHTML);">Add Favorite and Go-To-There</a>
+<script>
+ var d = document.documentElement;
+ //d.className = d.className.replace('no-js', 'js');
+ d.setAttribute('data-useragent',navigator.userAgent);
+ d.setAttribute('data-platform',navigator.platform);
+</script>
+</body>
+</html>

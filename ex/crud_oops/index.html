@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	url : incomplete in index2 : https://www.youtube.com/watch?v=rl_eGYDUkeU
+	
+	<script>
+		function Employee(){
+			return {
+				id: 0,
+				fname : "",
+				lname: "",
+				ph: ""
+			}
+		}
+
+		var emp1 = new Employee();
+		emp1.id = 1;
+		emp1.fname = "first name 1";
+		emp1.lname = "last name 1";
+		//console.log(emp1);
+
+		var emp2 = new Employee();
+		emp2.id = 2;
+		emp2.fname = "first name 2";
+		emp2.lname = "last name 2";
+		//console.log(emp2);
+
+		var emp3 = new Employee();
+		emp3.id = 3;
+		emp3.fname = "first name 3";
+		emp3.lname = "last name 3";
+		//console.log(emp3);
+
+		var emp4 = new Employee();
+		emp4.id = 4;
+		emp4.fname = "first name 4";
+		emp4.lname = "last name 4";
+		//console.log(emp4);
+
+		/*function EmployeeService(){
+			this.list = [];
+
+			this.insert = function(rec){
+				this.list.push(rec);
+			}
+
+			this.getAll = function(){
+				return this.list;
+			}
+
+			this.getRecord = function(id){
+				for(var i=0; i < this.list.length; i++){
+					var rec = this.list[i];
+					if(rec.id == id){
+						return rec;
+					}
+				}
+				return null;
+			}
+		}*/
+
+		function EmployeeService(){
+			return {
+				list : [],
+
+				insert: function(rec){
+					this.list.push(rec);
+				},
+
+				getAll: function(){
+					return this.list;
+				},
+
+				getRecord: function(id){
+					for(var i=0; i < this.list.length; i++){
+						var rec = this.list[i];
+						if(rec.id == id){
+							return rec;
+						}
+					}
+					return null;
+				}					
+			}
+			
+		}
+
+		var empservice = new EmployeeService();
+		empservice.insert(emp1);
+		empservice.insert(emp2);
+		empservice.insert(emp3);
+		empservice.insert(emp4);
+
+		var getAll = empservice.getAll();
+		console.log(getAll);
+
+		var getRecord4 = empservice.getRecord(4);
+		console.log(getRecord4)
+
+
+
+
+	</script>
+</body>
+</html>

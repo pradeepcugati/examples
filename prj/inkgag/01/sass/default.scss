@@ -1,0 +1,39 @@
+
+@charset 'UTF-8';
+@import "compass";
+
+// ----------------------------------------------------------------------
+  // Layout
+// ----------------------------------------------------------------------
+
+
+
+@import "helpers/variables";
+@import "helpers/mixins";
+
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "layout/cards";
+@import "layout/slider";
+@import "layout/forms";
+
+@import "pages/home";
+@import "pages/static";
+
+html, body {
+  //font-family: $system-font;
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { max-width: 100%; }
+
+
+

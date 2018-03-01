@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>::: Counter Component Creation :::</title>
+</head>
+<body>
+	var items = this.state.resItems;
+	<div id="resultFilteredList">
+		<input type="text" onChange={this.showFilterList} />
+		<ul>
+			{
+				items.map(function(itm){
+					return (<li key={itm}>{itm}</li>)
+				})
+			}
+		</ul>
+	</div>
+
+	<script>
+		var FilterList = React.CreateClass({
+			getInitialState: function(){
+				return {
+					initItems: ['apples','oranges','pineapples','cherry'],
+					resItems:[]
+				}
+			},
+			componentWillMount: function(){
+				this.setState({
+					resItems : this.state.initItems	
+				})
+			},
+			showFilterList: function(){
+				var showItems = this.state.resItems.filter(function(){
+					return this.state.resItems.search(event.target.value != -1)
+				})
+
+				this.setState({
+					resItems: showItems
+				})
+
+			}
+		})		
+		React.render(<FilterList />, getElementById(counterResult));
+	</script>
+	<script src="https://unpkg.com/react@latest/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>	
+</body>
+</html>

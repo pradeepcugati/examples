@@ -1,0 +1,25 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "JIYO",
+    "scope": "/",
+    "display": "browser",
+    "start_url": "https://store.qa.jiyo.com/",
+    "short_name": "JIYO",
+    "theme_color": "transparent",
+    "description": "Marketplace of JIYO.com",
+    "orientation": "any",
+    "background_color": "transparent",
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "/images/media/favicon/default/favicon.ico",
+            "sizes": "16x16"
+        },
+        {
+            "src": "/images/media/favicon/default/favicon.ico",
+            "sizes": "16x16"
+        }
+    ]
+}

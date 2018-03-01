@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	Array.prototype.contains = function(element){
+		console.log(element);
+		for(var i in this){
+			if(this[i] == element){
+				return true;
+			} 
+		}
+	}
+	var arrayEl = ['a','b','c','d'];
+	var searchEl = 'e';
+	if(arrayEl.contains(searchEl)){
+		alert("Yes! element "+searchEl+" found");
+	} else{
+		alert("Sorry! element "+searchEl+" not found");
+	}
+	</script>
+</body>
+</html>

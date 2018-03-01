@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<input type="text" id="check" value="Pradeep">
+	
+<script>
+ var Loader = function(){
+ 	var urlArr = ['load_script1.js','load_script2.js'];
+ 	for(var i in urlArr){
+ 		console.log("url of scripts "+urlArr[i]);
+ 		var el = document.createElement('script');
+ 		el.setAttribute('src', urlArr[i]);
+ 		console.log(el);
+ 		document.head.appendChild(el);
+ 	}
+ }
+ var loader = new Loader();
+
+ (function(){
+
+ })()
+ var el = document.getElementById('check');
+ el.onfocus = function(){
+ 	//console.log(this.value);
+ 	console.log(this.value);
+ 	if(this.value == el.value){
+ 		this.value = '';
+ 	}
+ }
+</script>
+</body>
+</html>

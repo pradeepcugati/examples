@@ -1,0 +1,20 @@
+https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/
+https://developer.mozilla.org/en-US/docs/Web/Events
+
+
+https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=API_KEY
+api key is 70c1bd2ae3794e6ab15503c992258e8c
+
+
+https://www.youtube.com/watch?v=gcx-3qi7t7c
+
+
+https://www.youtube.com/results?search_query=pwa+tutorial
+
+http://docs.pwabuilder.com/
+
+start using http-server for simple server interaction
+
+example - https://www.youtube.com/watch?v=huNqlWz157A
+api data - https://bstavroulakis.com/pluralsight/courses/progressive-web-apps/service/latest-deals.php
+fetch api - 

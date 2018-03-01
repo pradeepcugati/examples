@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style>
+	.square{
+		border:1px solid rgba(0,0,0,0.4);
+		border-radius: 4px;
+	}
+</style>
+<body>
+	
+	<div id="squares"></div>
+	<script>
+		var Square = function(id,size){
+			this.id = id;
+			this.size = size;
+			var el;
+			this.displayMeth = function(){
+				el = document.createElement('div');
+				el.style.width = this.size+"px";
+				el.style.height = this.size+"px";
+				el.setAttribute('id',this.id);
+				el.setAttribute('class','square')
+				el.innerHTML = "<p>"+this.id+"</p>";
+				document.getElementById('squares').appendChild(el);
+				clickHandler(el);
+			}
+			this.bgcolorMeth = function(color){
+				el.style.backgroundColor = color;
+			}
+			
+		}
+
+		var sq1 = new Square('square',60);
+		sq1.displayMeth();
+		sq1.bgcolorMeth('orange');
+
+		function clickHandler(el){
+			//console.log()
+			el.onclick = function(){
+				el.style.backgroundColor = "pink";
+			}
+		}
+
+	</script>
+</body>
+</html>

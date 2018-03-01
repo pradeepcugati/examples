@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="divid">Im & he is < than what has to be and > than what he should be.</div>
+	<script>
+		var el = document.getElementById('divid');
+
+		el.onclick = function(){
+			var elHtml = el.innerText;
+			var elToHtmlEntities = htmlEntities(elHtml);
+			//return elToHtmlEntities;
+			el.innerText = elToHtmlEntities;
+		}
+		function htmlEntities(str) {
+		    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+		}
+
+	</script>
+</body>
+</html>

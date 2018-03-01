@@ -1,0 +1,87 @@
+.custom-btn{
+	font-family: "Lato", sans-serif;
+	font-size:0.8125rem;
+	font-weight: 300 !important;
+    margin-left: auto;
+    margin-right: auto;
+    color: $grey;
+    background-color: $white;
+    border-color: $lightgrey;
+    border-width: 1px;
+    border-style: solid;
+    padding: 0.313rem 1.375rem;
+    @include roundedCorners(4);
+    @include single-transition(opacity, 1.5s, ease-in-out);	
+    //@include double-transition(background, 1s, ease-in-out, 0, border, .1s, ease-in-out, 0);
+   	// transition:background-color 0.25s ease 2s;
+
+   	&:hover, &:focus, &:active{
+		@include opacity(0.75);
+		text-decoration: none;
+	}
+
+   	&.r{
+		@include roundedCorners(18);
+	}
+	&.plain{
+		background-color: transparent;
+		opacity:0.9;
+		border:0;
+		color: lighten($grey,20%);
+		@include single-transition(opacity, 1s, ease-in-out, 0);
+		&:hover, &:focus, &:active{
+			opacity: 1; 
+		}
+	}
+	&.outline{
+		@include double-transition(background-color, 1s, ease-in-out, 0s, border, .1s, ease-in-out, 0s);
+		&:hover, &:focus, &:active {
+			text-decoration:none !important;
+			color: $grey;
+			//border-color: darken($lightgrey,5%);
+			//background-color: lighten($lightgrey,4%);
+		}
+	}
+
+	&.btn-white{
+		background-color: $white;
+		color:$grey;
+	}
+	&.btn-orange{
+		border-color: darken($orange,2%);
+		background-color: $orange;
+		color:$white;
+	}
+
+	&.expand{
+		width:100%;
+		display: inline-block;
+		text-align:center;	
+	}
+
+	*{
+		font-family: "Lato", sans-serif;
+	}
+}
+
+
+
+button.button, a.button{
+	//color: $grey;
+	&.outline{
+		font-size:0.8125rem;
+		color:$grey;
+		background-color: transparent;
+		border-color: $lightgrey;
+	    border-width: 1px;
+	    border-style: solid;
+	}
+}
+.off-canvas-wrap .inner-wrap{
+	a{
+		
+		//@include button-variant($grey, $white, lighten($grey,50%));
+		color:$grey;
+	}
+}
+

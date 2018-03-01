@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="squares"></div>
+	<script>
+		function Square(size){
+			this.size = size;
+			this.id = getNextId();
+			var el;
+			function getNextId(){
+				var squareId = document.querySelectorAll(".square");;
+				if(squareId){
+					return squareId.length;
+				}
+				return 0;
+			}
+			var self = this;
+			function display(){
+				el = document.createElement('div');
+				el.setAttribute('id',self.id);
+				el.setAttribute('class','square');
+				el.innerHTML = "<p>"+self.id+"</p>";
+				document.getElementById('squares').appendChild(el);
+				el.onclick = function(){
+					alert("You clicked "+self.id+" element");
+				}
+			}
+			display();
+		}
+
+		var s1 = new Square(20);
+		var s2 = new Square(40);
+
+	</script>
+</body>
+</html>

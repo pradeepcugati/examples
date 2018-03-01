@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>::: Click Handler :::</title>
+</head>
+<body>
+<div id="s1" class="class-s1"></div>
+<p class="" id="outputs1"></p>
+<div id="c1" class="class-c1"></div>
+<p class="" id="outputc1"></p>
+
+
+<script>
+	var clickCount = 0;
+	function Square(id,className,size){
+		this.id = id;
+		this.className = className;
+		this.size = size;
+		this.clickCount = 0;
+
+		this.displayMeth = function(){
+			var el = document.getElementById(this.id);
+			//el.style.width = this.size+"px";
+			//el.style.height = this.size+"px";
+			el.innerHTML = "<p>"+this.className+"</p>";
+		}
+		this.clickHanded = function(){
+			this.clickCount++;
+			console.log(this);
+			document.getElementById('outputS').innerHTML = "You have clicked "+parseInt(this.clickCount)+" times";
+		}
+	}
+
+
+	function Circle(id,className,size){
+		this.id = id;
+		this.className = className;
+		this.size = size;
+		this.clickCount = 0;
+
+		this.displayMeth = function(){
+			var el = document.getElementById(this.id);
+			//el.style.width = (this.size * 2)+"px";
+			//el.style.height = (this.size * 2)+"px";
+			el.innerHTML = "<p>"+this.className+"</p>";
+		}
+
+		this.clickHanded = function(){
+			this.clickCount++;
+			console.log(this);
+			document.getElementById('outputC').innerHTML = "You have clicked "+parseInt(this.clickCount)+" times";
+		}
+
+	}
+
+	function click(){
+		this.clickCount++;
+		document.getElementById('output'+this.id).innerHTML = "You have clicked "+this.clickCount+" times";
+	}
+
+	var square1 = new Square("s1","class-s1",80);
+	setupClickHander(square1);	
+	square1.displayMeth();
+
+	var circle1 = new Circle("c1","class-c1",50);
+	setupClickHander(circle1);
+	circle1.displayMeth();
+	
+
+	function setupClickHander(shape){
+		var el = document.getElementById(shape.id);
+		el.onclick = function(){
+			console.log(this);
+			click.call(shape);
+			//square1.clickHanded()
+		};
+	}
+
+
+
+
+</script>
+</body>
+</html>

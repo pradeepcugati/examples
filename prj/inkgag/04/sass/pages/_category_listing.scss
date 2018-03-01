@@ -1,0 +1,42 @@
+.custom-panel{
+	font-size:0.8125rem;
+	border: 1px solid #eaeaea;
+	margin-bottom: 40px;
+	padding: 0 20px 30px 20px;
+
+	.custom-filter{
+		h4{
+			font-size:0.875rem;
+		}
+		&.filter-price{
+			.filter-price-range{
+				display: flex;
+				height: 50px;
+				align-items:center;
+				justify-content:center;
+				input[disabled="disabled"]{
+					max-width: 40px;
+				    max-height: 20px;
+				    width: auto;
+				    height: auto;
+				    border: 0;
+				    margin: 0;
+				}
+			}
+		}
+		.list-group-item{
+			display:block;
+			&.all{
+				span{
+					visibility: hidden;
+					font-size:0.875rem;
+					font-weight: bold;
+				}
+			}
+			label input[type="checkbox"]{
+				position:static;
+				opacity:1;
+			}
+		}
+	}	
+}

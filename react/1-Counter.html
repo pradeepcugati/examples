@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>::: Counter Component Creation :::</title>
+</head>
+<body>
+	
+	<div id="counterResult"></div>
+
+	<script>
+		var Counter = React.CreateClass({
+			
+			inCounter : function(){
+				this.setState({
+					count: this.state.count + 1;	
+				})
+				
+			},
+			getInitialState : function(){
+				return {count: 0}
+			},
+			render: function(){
+				return (
+					<div className="result-counter">
+						<div className="result">{this.state.count}</div>
+						<button OnClick={inCounter}>button</button>
+					</div>
+				)
+			}
+		})		
+		React.render(<Counter />, getElementById(counterResult));
+	</script>
+	<script src="https://unpkg.com/react@latest/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>	
+</body>
+</html>

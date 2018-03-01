@@ -1,0 +1,410 @@
+<html>
+	<head></head>
+	<title>::: 
+		https://www.youtube.com/watch?v=HbgRFH9BAy0 
+		https://www.youtube.com/watch?v=c0mLRpw-9rI&index=3&list=PL7pEw9n3GkoW5bYOhVAtmJlak3ZK7SaDf
+		:::</title>
+	<body>
+
+		<h2>Object Module with onclick</h2>
+		<div id="eg" onClick=MyObj.hitme("Pradeep")>click</div>
+		<hr />
+		<p id="help">Helpful notes will appear here</p>
+		<p>E-mail: <input type="text" id="email" name="email"></p>
+		<p>Name: <input type="text" id="name" name="name"></p>
+		<p>Age: <input type="text" id="age" name="age"></p>
+
+		<hr />
+
+		<h2>Event Bubbing / Capturing</h2>
+		<div class="parent" id="parent" style="padding:20px; box-shadow: -1px -1px 2px rgba(0,0,0,0.4)">
+			<div class="child" id="child">
+				Child
+			</div>
+			<div class="other" id="other">
+				Other
+			</div>
+		</div>
+	</body>
+
+	<script>
+		// Object Moduel
+		var MyObj = {}
+		MyObj.hitme = function(msg){
+			alert("The value is a "+msg) ;
+		}
+
+		// Helper Function
+		function setupFunc(){
+			var helpText = [
+				{'id':'email','help':'your email'},
+				{'id':'name','help':'your name'},
+				{'id':'age','help':'your age'}
+			];
+
+			for(var i=0; i < helpText.length; i++){
+				document.getElementById(helpText[i].id).onfocus = getHelpText(helpText[i].help);
+			}
+		}
+
+		setupFunc();
+
+		function getHelpText(help){
+			return function(){
+				document.getElementById('help').innerHTML = help;
+			}
+		}
+
+		// Anonymous function with settimeout function
+
+		(function(){
+			
+			var msgArr = ["Hello","I","am","Pradeep"];
+			var sayhi = function(p){
+				setTimeout(function(){
+					console.log(p)
+				},10)
+			}
+			for(var i in msgArr){
+				//console.log(msgArr[i]);
+				sayhi(msgArr[i])
+				
+			}
+
+
+		})();
+
+		// closure
+		function ClosureConcept(){
+			var assignClosure = "Hi Closure";
+			this.closureMeth = function(){
+				return "Blessed";
+			}
+			//return assignClosure;
+		}
+		var c = ClosureConcept();
+		console.log(c);
+
+		// modular pattern
+		var Alert = (function(){
+			var messagesArr=[];
+			return {
+				addMeth: function(msg){
+					messagesArr.push(msg);
+				},
+				showMeth: function(){
+					return messagesArr;
+				}
+			}
+		})();
+		Alert.addMeth("This is");
+		Alert.addMeth("Pradeep");
+		var res = Alert.showMeth();
+		console.log(res);
+
+		// this concept
+		var PersonObj = {
+		 fname: "prp",
+		 lname: "kumar",
+		 getNameMeth: function(){
+		  return this.fname+" "+this.lname;
+		 }
+		}
+
+		var p = PersonObj.getNameMeth();
+		console.log(p);
+
+
+		// Bind Method if 'this' is not recognizing
+		var PersonFunc = function(){
+			this.name = "Prp";
+			setTimeout(function(){
+				console.log("The name is "+this.name);
+			}.bind(this),2000)
+		}
+		var pf1 = new PersonFunc();
+
+		// Call / Apply\
+		var newObj = {
+			fname: "first name",
+			lname: "last name"
+		}
+
+		function sayMeth(){
+			console.log(this.fname+" "+this.lname);
+		}
+		sayMeth.call(newObj);
+
+		// Using Person Function properties in Another Function
+		var Human = function(fname,lname){
+			this.fname = fname;
+			this.lname = lname;
+			
+		}
+		Human.prototype.nameMeth = function(){
+			return this.fname+" "+this.lname;
+		}
+
+		var Employee = function(fname,lname,eid){
+			Human.call(this,fname,lname);
+			this.eid = eid;
+		}
+		Employee.prototype = Object.create(Human.prototype);
+		Employee.prototype.constructor = Employee;
+
+		var eo = new Employee('fname-pra','lname-kumar',1442);
+		console.log(eo)
+
+		// Object creation using
+		// 1. constructor 2. factory pattern 3. prototype 4. Dynamic prototyping
+
+		// Factory Pattern
+
+		function executeMeFactory(name,age,gender){
+			var temp = {}
+			temp.name = name;
+			temp.age = age;
+			temp.gender = gender;
+
+			temp.combinedFunc = function(){
+				return this.name +" and "+this.age;
+			}
+			return temp;
+		}
+
+		var ef1 = executeMeFactory("yogiFactory","25","male");
+		console.log(ef1.combinedFunc())
+
+		// Constructor pattern
+		function executeMeConstructor(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+
+			this.combinedFunc = function(){
+				return this.name +" and "+this.age;
+			}
+		}
+
+		var ec1 = new executeMeConstructor("yogiConstuctor","25","male");
+		console.log(ec1.combinedFunc())
+
+		// Prototype pattern (shared Area)
+		function executeMePrototype(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+
+			
+		}
+		executeMePrototype.prototype.combinedFunc = function(){
+			console.log( this.name +" and "+this.age);
+		}
+
+		var ep1 = new executeMePrototype("yogiPrototype","25","male")
+		console.log(ep1.combinedFunc())
+
+		
+		// dynamic prototype pattern
+
+		function executeMeDynamicPrototype(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+
+			if(typeof this.combinedFunc !== 'function'){
+				executeMePrototype.prototype.combinedFunc = function(){
+					console.log( this.name +" and "+this.age);
+				}	
+			}
+		}
+
+		// Call, Apply, Bind Method
+		var obj1= {n:20}
+
+		var addFuncMeth = function(par1,par2){
+			return "The output is "+(this.n + par1 + par2);
+		}
+
+		// call method
+		var addresCall = addFuncMeth.call(obj1, 25, 23);
+		console.log(addresCall);
+
+		// apply method
+		var arrMeth = [23,45];
+		var addresApply = addFuncMeth.apply(obj1, arrMeth);
+		console.log(addresApply);
+
+		// bind method
+		var arrMeth = [45,45];
+		var addresBind = addFuncMeth.bind(obj1);
+		console.log(addresBind(23,47));
+
+
+
+		// call backs
+		var add = function(a,b){
+			return a + b;
+		}
+
+		var multiply = function(a,b){
+			return a*b;
+		}
+
+		var cbEx = function(par1, par2, cb){
+			if(typeof cb == 'function'){
+				return cb(par1,par2);
+			}
+		}
+
+		var resAdd = cbEx(40,20,add);
+		var resMultiply = cbEx(40,20,multiply);
+		console.log(resAdd);
+		console.log(resMultiply);
+
+		// Promises
+		var promiseFunc = new Promise(function(resolve,reject){
+			var isClean = true;
+			if(isClean){
+				resolve('Clean');
+			}
+			else{
+				reject('not clean');
+			}
+		})
+		promiseFunc.then(function(fromResolve){
+			console.log("the room is "+fromResolve);
+		}).catch(function(fromReject){
+			console.log("the room is "+fromReject);
+		})
+
+
+		// Another promise example
+		var cleanRoom = function(){
+			return new Promise(function(resolve,reject){
+				resolve('cleanedRoom')
+			})
+		}
+
+		var removeGarbage = function(){
+			return new Promise(function(resolve,reject){
+				resolve('cleanedGarbage');
+			})
+		}
+
+		var removeItems = function(){
+			return new Promise(function(resolve,reject){
+				resolve('Promises');
+			})
+		}
+
+		cleanRoom().then(function(){
+			return removeGarbage()
+		}).then(function(){
+			return removeItems();
+		}).then(function(){
+			console.log("finished");
+		})
+
+		// Currying function
+
+		var addCurry = function(val1){
+			return function(val2){
+				return val1+val2;
+			}
+		}
+
+		var addCurry1 = addCurry(8);
+		var addCurryRes = addCurry1(4);
+		console.log("The res is "+addCurryRes);
+
+		// ES6 with Arrow Functions
+		var IncrementFunc = function(){
+			this.val = 1;
+
+			setTimeout(() => {
+				this.val++;
+				console.log("Arrow function output is "+this.val);
+			},1000)
+		}
+
+		//IncrementFunc();
+		var i1 = new IncrementFunc();
+		
+		// Event Bubbling - which starts from bottom of the glass to top - soda
+		var parent = document.getElementById('parent');
+		parent.addEventListener('click',function(){
+			console.log('parent cllicked')
+		})
+		var child = document.getElementById('child');
+		child.addEventListener('click',function(){
+			console.log('child cllicked')
+		})
+
+		// Disable either bubbling or capturing
+
+		// Event Capturing - from Top to bottom
+		var parentCap = document.getElementById('parent');
+		parentCap.addEventListener('click',function(){
+			console.log('parent cllicked')
+		},true)
+		var childCap = document.getElementById('child');
+		childCap.addEventListener('click',function(){
+			console.log('child cllicked')
+		},true)
+
+		/*window.onbeforeunload = function () {
+	       return "Are you sure?";
+	       //alert();
+	    }*/
+
+	    /*$(window).blur(function() {
+		    //do something
+		    //alert("window is blur");
+		    return "Are you sure?";
+		});*/
+
+		
+
+	</script>
+	<style>
+		@media only screen
+			and (min-device-width:320px)
+			and (max-device-width:480px)
+			and (-webkit-min-device-pixel-ratio: 2)
+			//and (orientation:portrait // landscape)
+			{
+
+			}
+
+		@mixin breakpoint($class){
+			@if $class == xs{
+				@media (max-width: 767px){ @content; } // which allows content block to the mixin
+			}
+			@else if == sm{
+				@media (min-width: 768px){ @content; }
+			}
+			@else if == md {
+				@media (min-width: 992px) {@content;}
+			}
+			@else if == lg{
+				@media (min-width: 1200px) {@content;}
+			}
+			 @else {
+			   @warn "Breakpoint mixin supports: xs, sm, md, lg;
+			}
+		}
+
+		//<meta name="viewport" content="width=device-width" />
+
+		// bootstrap column logic
+		@for $i from 1 through 12{
+			.column-#{$i}{
+				width: (100% / 12) * $i;
+			}
+		}
+
+	</style>
+</html>
+
+

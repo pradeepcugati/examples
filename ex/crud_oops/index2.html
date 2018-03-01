@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<form action="#" id="insertRecord">
+		<div id="message"></div>
+		<input type="text" id="fname" placeholder="first name">
+		<input type="text" id="lname" placeholder="last name">
+		<input type="text" id="ph" placeholder="phone">
+
+		<button id="btn_submit">Submit</button>
+
+	</form>
+	
+	<script>
+		function Employee(){
+			return {
+				id: 0,
+				fname : "",
+				lname: "",
+				ph: ""
+			}
+		}
+
+		
+		
+
+
+		function EmployeeService(){
+			return {
+				list : [],
+				empObj: function(){
+					return {
+						id: 0,
+						fname : "",
+						lname: "",
+						ph: ""
+					}
+				},
+				insert: function(rec){
+					this.list.push(rec);
+				},
+
+				getAll: function(){
+					return this.list;
+				},
+
+				getRecord: function(id){
+					for(var i=0; i < this.list.length; i++){
+						var rec = this.list[i];
+						if(rec.id == id){
+							return rec;
+						}
+					}
+					return null;
+				}					
+			}
+			
+		}
+
+		var empservice = new EmployeeService();
+		
+
+		window.onload = function(){
+			function $(key){
+				return document.getElementById(key);
+			}
+
+			function clearfields(){
+				$('fname').value = '';
+				$('lname').value = '';
+				$('ph').value = '';
+			}
+			var btn_submit = $('btn_submit')
+			var empserv = new EmployeeService();
+			var id = 0;
+			btn_submit.onclick = function(){
+				/*var emp = new Employee();
+				emp.fname = $('fname').value;
+				emp.lname = $('lname').value;
+				emp.ph = $('ph').value;	
+				console.log(emp);*/
+
+				id = id + 1;
+				console.log(empserv);
+				var emp = empserv.empObj();
+				emp.id = id;
+				emp.fname = $('fname').value;
+				emp.lname = $('lname').value;
+				emp.ph = $('ph').value;	
+				console.log(emp);
+				empserv.insert(emp);
+				console.log(empserv);
+
+				$('message').innerHTML = "Record Added"; 
+				console.log(empserv.getAll())
+				return false;
+			}
+
+			empserv.getRecord(2)
+
+
+
+			
+
+		}
+
+
+	</script>
+</body>
+</html>

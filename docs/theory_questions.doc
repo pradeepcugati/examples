@@ -1,0 +1,314 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Document</title>
+	<meta name="generator" content="LibreOffice 5.1.6.2 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2018-01-30T18:28:49.341727308"/>
+	<meta name="" content=""/>
+	<style type="text/css">
+		@page { margin: 2cm }
+		p { color: #000000; page-break-before: auto }
+		pre.cjk { font-family: "Nimbus Mono L", monospace }
+		code.cjk { font-family: "Nimbus Mono L", monospace }
+	</style>
+</head>
+<body lang="en-IN" dir="ltr">
+<div id="Frame1" dir="ltr" style="position: absolute; top: 0cm; left: 0cm; width: 18.52cm; height: 10.85cm; border: none; padding: 0cm; background: #ffffff">
+	<div id="Frame2" dir="ltr" style="position: absolute; top: 0cm; left: 0cm; width: 18.52cm; height: 10.85cm; border: none; padding: 0cm; background: #ffffff"><span class="sd-abs-pos" style="position: absolute; top: 0cm; left: 0cm; width: 700px">
+		<img src="data:" name="Object1" width="700" height="410"/>
+</span>
+		<p><br/>
+<br/>
+
+		</p>
+	</div>
+	<p><br/>
+<br/>
+
+	</p>
+</div>
+<div id="Frame3" dir="ltr" style="position: absolute; top: 0cm; left: 0cm; width: 18.52cm; height: 5.64cm; border: none; padding: 0cm; background: #ffffff">
+	<div id="Frame4" dir="ltr" style="position: absolute; top: 0cm; left: 0cm; width: 18.52cm; height: 5.64cm; border: none; padding: 0cm; background: #ffffff"><span class="sd-abs-pos" style="position: absolute; top: 0cm; left: 0cm; width: 700px">
+		<img src="data:" name="Object2" width="700" height="213"/>
+</span>
+		<p><br/>
+<br/>
+
+		</p>
+	</div>
+	<p><br/>
+<br/>
+
+	</p>
+</div>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/questions/javascript-questions.md
+</font></font></font>
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">1.
+Write a mul function which will produce the following outputs when
+invoked</font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">Problem:</font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">	console.log(mul(2)(3)(4));
+// output : 24 </font></font></font>
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">	console.log(mul(4)(3)(4));
+// output : 48</font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">Solution:</font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">	function
+mul (x) { </font></font></font>
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		return
+function (y) { // anonymous </font></font></font>
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">			function
+return function (z) { // anonymous </font></font></font>
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">				function
+return x * y * z;</font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">			};
+</font></font></font>
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		};
+</font></font></font>
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">	}</font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><a name="how-do-you-check-if-an-object-is-an-array-or-not"></a>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">2.
+<span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">How
+do you check if an object is an array or not?</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">Problem:</font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	var</span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal">
+</span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">arrayList
+= [1,2,3];</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">Solution</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	if(Object.prototype.toString.call(arrayList)
+== ‘[Object Array]’{</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">		console.log(‘its
+array’);</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	}</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	or</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	Array.isArray(arrayList)</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><a name="what-will-be-the-output-of-the-following-code"></a>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">3.
+</span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">What
+will be the output of the following code?</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">Problem:</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	</span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">var
+output = (function(x){ delete x; return x; })(0);
+	console.log(output); // </span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">is
+0</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	----------</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	var
+x = 1; var output = (function(){ delete x; return x; })();
+console.log(output); // is 1</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><a name="what-will-be-the-output-of-the-code-below-3"></a>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">4.
+What will be the output of the code below?</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">Problem:</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	var
+Employee = { company: 'xyz' } var emp1 = Object.create(Employee);
+delete 	emp1.company console.log(emp1.company); // xyz</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><b>Explanation:</b></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">	<span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">The
+output would be&nbsp;xyz. Here,&nbsp;emp1&nbsp;object has&nbsp;company&nbsp;as
+its&nbsp;prototypeproperty. 	The&nbsp;delete&nbsp;operator doesn't
+delete prototype property. </span></span></span></font></font></font>
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">	emp1&nbsp;object
+doesn't have&nbsp;company&nbsp;as its own property.&nbsp;</span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">5.<span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><b>Explain
+the difference between classical inheritance and prototypal
+inheritance.</b></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><b>Solution:</b></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><span style="font-variant: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>	</b></span></span></font></font></font></span><strong><span style="font-variant: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><span style="font-style: normal"><b>Classical
+Inheritance:</b></span></span></font></font></font></span></strong><span style="font-variant: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">&nbsp;A
+constructor function instantiates an instance via the “new”
+keyword. This new instance inherits properties from a parent class.</span></span></span></font></font></font></span></p>
+<p style="margin-bottom: 0.1cm"><strong><span style="font-variant: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">	</span></span></span></font></font></font></span></strong><strong><span style="font-variant: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><span style="font-style: normal">Prototypal
+Inheritance</span></span></font></font></font></span></strong><span style="font-variant: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">:
+An instance is created by cloning an existing object that serves as a
+prototype. This instance—often instantiated using a factory
+function or “Object.create()”—can benefit from selective
+inheritance from many different objects.</span></span></span></font></font></font></span></p>
+<p style="margin-bottom: 0.1cm"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">6.
+Check for palidrome : Eg : Madam on reverse is madam</span></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">	Solution:</span></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">	function
+palind(str){</span></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">		return
+(str == str.split(‘’).reverse().join(‘’))</span></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">}</span></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">7.
+Event Delegation</span></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">	</span></span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">When
+building an application, sometimes you’ll need to attach event
+listeners to buttons, text, or images on the page in order to perform
+some action when the user interacts with the element.</span></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">	Eg:</span></span></span></span></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">		&lt;ul
+id=&quot;todo-app&quot;&gt;</span></span></span></span></font></font></font></p>
+<pre class="western" style="font-variant: normal; letter-spacing: normal; orphans: 2; widows: 2"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">&lt;li class=&quot;item&quot;&gt;Walk the dog&lt;/li&gt;</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">&lt;li class=&quot;item&quot;&gt;Pay bills&lt;/li&gt;</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">&lt;li class=&quot;item&quot;&gt;Make dinner&lt;/li&gt;</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">&lt;li class=&quot;item&quot;&gt;Code for one hour&lt;/li&gt;</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		&lt;/ul&gt;</font></font></font></pre><p style="margin-bottom: 0.1cm">
+<br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><b><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal">		//Event
+Listener</span></span></span></b></font></font></font></p>
+<p style="margin-bottom: 0.1cm"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">		document.addEventListener('DOMContentLoaded',
+function() {</span></span></span></span></font></font></font></p>
+<pre class="western" style="font-variant: normal; letter-spacing: normal; orphans: 2; widows: 2"><font color="#000000">  </font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">let app = document.getElementById('todo-app');</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">let items = app.getElementsByClassName('item');</span></span></font></font></font>
+<font color="#000000">  </font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">// attach event listener to each item</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">for (let item of items) {</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		    <span style="font-style: normal"><span style="font-weight: normal">item.addEventListener('click', function() {</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		      <span style="font-style: normal"><span style="font-weight: normal">alert('you clicked on item: ' + item.innerHTML);</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		    <span style="font-style: normal"><span style="font-weight: normal">});</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">}</span></span>  </font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		});</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">	Explanation<br/>
+          This is fine for 4 elements, but what if someone adds 10,000 items&nbsp;</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">		//Event Delegation<br/>
+		</span></span><span style="font-style: normal"><span style="font-weight: normal">document.addEventListener('DOMContentLoaded', function() {</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">let app = document.getElementById('todo-app');</span></span></font></font></font>
+<font color="#000000">  </font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">// attach event listener to whole container</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">app.addEventListener('click', function(e) {</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		    <span style="font-style: normal"><span style="font-weight: normal">if (e.target &amp;&amp; e.target.nodeName === 'LI') {</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		      <span style="font-style: normal"><span style="font-weight: normal">let item = e.target;</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		      <span style="font-style: normal"><span style="font-weight: normal">alert('you clicked on item: ' + item.innerHTML);</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		    <span style="font-style: normal"><span style="font-weight: normal">}</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		  <span style="font-style: normal"><span style="font-weight: normal">});</span></span>  </font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		});</font></font></font>
+
+<a name="2066"></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="letter-spacing: normal">8. </span><b>Question #3: Debouncing</b></font></font></font></pre><p style="margin-top: 0.21cm; margin-bottom: 0cm">
+<a name="82e7"></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">There
+are some browser events that can fire many times within a short
+timespan very quickly, such as resizing a window or scrolling down a
+page. If you attach an event listener to the window scroll event for
+example, and the user continuously scrolls down the page very
+quickly, your event may fire thousands of times within the span of 3
+seconds. This can cause some serious performance issues.</font></font></font></p>
+<p style="margin-top: 0.77cm; margin-bottom: 0cm"><a name="9603"></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">If
+you’re discussing building an application in an interview, and
+events like scrolling, window resizing, or key pressing come up, make
+sure to mention debouncing and/or throttling as a way to improve page
+speed and performance. A real example taken from this&nbsp;</font></font></font><a href="https://css-tricks.com/debouncing-throttling-explained-examples/" target="_blank"><font color="#000000"><span style="text-decoration: none"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">guest
+post on css-tricks</span></font></font></span></font></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">:</font></font></font></p>
+<blockquote style="margin-left: 1.05cm; margin-right: 1.05cm; margin-bottom: 0cm; border-top: none; border-bottom: none; border-left: 2.25pt solid #000000; border-right: none; padding-top: 0cm; padding-bottom: 0cm; padding-left: 0.53cm; padding-right: 0cm"><a name="c06f"></a>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">In
+2011, an issue popped up on the Twitter website: when you were
+scrolling down your Twitter feed, it became slow and unresponsive.
+John Resig published&nbsp;</font></font></font><a href="http://ejohn.org/blog/learning-from-twitter" target="_blank"><font color="#000000"><span style="text-decoration: none"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">a
+blog post about the problem</span></font></font></span></font></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;where
+it was explained how bad of an idea it is to directly attach
+expensive functions to the&nbsp;</font></font></font><span style="display: inline-block; border: none; padding: 0cm"><span style="font-variant: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><code class="western">scroll</span></span></font></font></font></span></code><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;event.</font></font></font></blockquote>
+<p style="margin-top: 0.77cm; margin-bottom: 0cm"><a name="6c60"></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">Debouncing
+is one way to solve this issue by limiting the time that needs to
+pass by until a function is called again.</span></font></font></font><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;A
+correct implementation of debouncing would therefore&nbsp;</font></font></font><em><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">group</font></font></font></em><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">&nbsp;several
+function calls into one and execute it only once after some time has
+elapsed. Here’s an implementation in plain JavaScript that makes
+use of topics such as&nbsp;</font></font></font><a href="https://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/" target="_blank"><font color="#000000"><span style="text-decoration: none"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">scope</span></font></font></span></font></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">,
+closures,&nbsp;</font></font></font><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this" target="_blank"><font color="#000000"><span style="text-decoration: none"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">this</span></font></font></span></font></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">,
+and&nbsp;</font></font></font><a href="http://www.w3schools.com/jsref/met_win_settimeout.asp" target="_blank"><font color="#000000"><span style="text-decoration: none"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="background: transparent">timing
+events</span></font></font></span></font></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">:</font></font></font></p>
+<p style="margin-top: 1.01cm; margin-bottom: 0cm"><a name="636b"></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">This
+function — when wrapped around an event — will execute
+only after a certain amount of time has elapsed.</font></font></font></p>
+<p style="margin-top: 0.77cm; margin-bottom: 0cm"><a name="7b22"></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">You
+would use this function like so:</font></font></font></p>
+<p style="margin-top: 1.01cm; margin-bottom: 0cm"><a name="6dfd"></a><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">Throttling
+is another technique that’s is similar to debouncing, except that
+instead of waiting for some time to pass by before calling a
+function, throttling just spreads the function calls across a longer
+time interval. So if an event occurs 10 times within 100
+milliseconds, throttling could spread out each of the function calls
+to be executed once every 2 seconds instead of all firing within 100
+milliseconds.</font></font></font></p>
+<pre class="western" style="margin-top: 1.01cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal"><font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">// debounce function that will wrap our event</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">function debounce(fn, delay) {</font></font></font>
+<font color="#000000">  <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">// maintain a timer</span></span></font></font></font>
+<font color="#000000">  <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">let timer = null;</span></span></font></font></font>
+<font color="#000000">  <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">// closure function that has access to timer</span></span></font></font></font>
+<font color="#000000">  <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">return function() {</span></span></font></font></font>
+<font color="#000000">    <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">// get the scope and parameters of the function </span></span></font></font></font>
+<font color="#000000">    <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">// via 'this' and 'arguments'</span></span></font></font></font>
+<font color="#000000">    <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">let context = this;</span></span></font></font></font>
+<font color="#000000">    <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">let args = arguments;</span></span></font></font></font>
+<font color="#000000">    <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">// if event is called, clear the timer and start over</span></span></font></font></font>
+<font color="#000000">    <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">clearTimeout(timer);</span></span></font></font></font>
+<font color="#000000">    <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">timer = setTimeout(function() {</span></span></font></font></font>
+<font color="#000000">      <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">fn.apply(context, args);</span></span></font></font></font>
+<font color="#000000">    <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">}, delay);</span></span></font></font></font>
+<font color="#000000">  <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">}</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">}</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">// function to be called when user scrolls</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">function foo() {</font></font></font>
+<font color="#000000">  <font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-style: normal"><span style="font-weight: normal">console.log('You are scrolling!');</span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">}</font></font></font>
+
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">// wrap our function in a debounce to fire once 2 seconds have gone by</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">let elem = document.getElementById('container');</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">elem.addEventListener('scroll', debounce(foo, 2000));</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">10. Bind Method</font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">	</span></span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">var</span></span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"> </span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">monica = { name: 'Monica Geller', total: 400, deductMontlyFee: function(fee){</span></span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"> </span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">this.total = this.total - fee; return</span></span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"> </span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">this.name + ' remaining balance is '+ this.total; } }</span></span></span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">var rachel = {name: 'Rachel Green', total: 1500}; <br/>
+var rachelFeeDeductor = monica.deductMonthlyFee.bind(rachel, 200); rachelFeeDeductor(); //&quot;Rachel Green remaining balance is 1300&quot; rachelFeeDeductor(); //&quot;Rachel Green remaining balance is 1100&quot;</span></span></span></span></font></font></font>
+
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">12. Object memory location varies for “a” and “b”. </span></span></span></span><span style="font-variant: normal"><font color="#242729"><font face="Arial, Helvetica Neue, Helvetica, sans-serif"><font size="3" style="font-size: 11pt"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">Objects are sometimes called reference types to distinguish them from JavaScript’s primitive types.&nbsp;</span></span></span></font></font></font></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">	</span></span></span></span><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">var a = {a: 1}; <br/>
+	var b = {a: 1}; <br/>
+	a == b //false <br/>
+	a === b //false <br/>
+	var c = a; <br/>
+	a == c//true <br/>
+	a === c //true</span></span></span></span></font></font></font>
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt"><span style="font-variant: normal"><span style="letter-spacing: normal"><span style="font-style: normal"><span style="font-weight: normal">13.  Object Equality</span></span></span></span></font></font></font></pre><p style="margin-top: 1.01cm; margin-bottom: 0cm">
+<br/>
+
+</p>
+<pre class="western" style="margin-bottom: 0.5cm; font-variant: normal; letter-spacing: normal; font-style: normal; font-weight: normal; orphans: 2; widows: 2">
+
+<font color="#000000"><font face="OpenSans, sans-serif"><font size="2" style="font-size: 10pt">		</font></font></font></pre><p style="margin-bottom: 0.1cm">
+<br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.1cm"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.1cm; font-weight: normal"><br/>
+<br/>
+
+</p>
+</body>
+</html>

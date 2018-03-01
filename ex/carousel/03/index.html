@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>::: Jquery Image Slider :::</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		.slider-inner ul{
+			display: flex;
+		}
+		.slider-inner ul li{
+			display: none;
+		}
+		.slider-inner ul li a{
+			position:relative;
+		}
+		.slider-inner ul li a span{
+			position: absolute;
+			right:20px;
+			bottom:20px;
+			background: rgba(0,0,0,0.8);
+		}
+	</style>
+</head>
+<body>
+	<div class="slider-inner">
+		<ul>
+			<li><a href="javascript:void(0)"><img src="images/density.gif" alt="density" /><span /></a></li>
+			<li><a href="javascript:void(0)"><img src="images/ortex.gif" alt="ortex" /><span /></a></li>
+			<li><a href="javascript:void(0)"><img src="images/slice.gif" alt="slice" /><span /></a></li>
+			<li><a href="javascript:void(0)"><img src="images/Trp88.gif" alt="Trp88" /><span /></a></li>
+		</ul>	
+		<a href="javascript:void(0)" class="prev-item">prev</a>
+		<a href="javascript:void(0)" class="next-item">next</a>
+	</div>
+<script src="jquery.min.js"></script>
+<script>
+	var sliderArray=[];
+	var currentObj;
+	var count = 1;
+	for(var i of $('.slider-inner').find('li')){
+		sliderArray.push(i);
+	}
+	showCurrentItem(count);
+
+	function showCurrentItem(count){
+		$('.slider-inner').find('li').hide();
+		$('.slider-inner').find('li:nth-child('+count+')').show();
+		var text = $('.slider-inner').find('li:nth-child('+count+')').find('img').attr('alt');
+		$('.slider-inner').find('li:nth-child('+count+')').find('span').text(text);
+
+	}
+	$('.next-item,.prev-item').on('click',function(){
+		if($(this).text() == 'next'){
+			if(count <= sliderArray.length){
+				if(count == sliderArray.length){
+					count = 0;
+				}
+				count++;	
+			} 	
+		} else if($(this).text() == 'prev'){
+			if(count <= 1){
+				count = sliderArray.length + 1;
+			}
+			count--;
+		}
+		showCurrentItem(count);
+	})
+</script>
+</body>
+</html>

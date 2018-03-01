@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.outer{
+			width:400px;
+			height:400px;
+			background: rgba(250,250,10,0.8);
+			position: relative;
+		}
+		.inner{
+			width: 100px;
+			height: 100px;
+			background: rgba(50,250,10,0.4);
+			position: absolute;
+			left: 50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+		}
+	</style>
+</head>
+<body>
+	url is https://www.careercup.com/
+	https://github.com/h5bp/Front-end-Developer-Interview-Questions
+	https://www.thatjsdude.com/interview/js2.html
+	<div class="outer">
+		<div class="inner">
+		</div>
+	</div>
+
+
+	<div class="todo-container">
+		<div class="list-addition">
+			<input type="text" id="todoInput">
+			<button class="btn-add" id="btnAdd" onclick="addmoreFunc()">Add more</button>	
+		</div>
+		<div class="todo-list-block">
+			<ul id="todoList"></ul>
+		</div>
+	</div>
+
+	<script>
+		function addmoreFunc(){
+			var btnAdd = document.getElementById('btnAdd');
+			var textEl = document.getElementById('todoInput').value;
+			var textNode = document.createTextNode(textEl);
+			var liEl = document.createElement('li');
+			var todoList = document.getElementById('todoList');
+			liEl.appendChild(textNode);
+			document.getElementById('todoList').appendChild(liEl);
+		}
+		
+		
+
+		function a(){
+			return "Hello from \'A\' Function ";
+		}
+
+		const sentence = a `hi`;
+
+		console.log(sentence);
+
+		/*---------------*/
+		function y(){
+			console.log(this.length);
+		}
+		var x = {
+			length : 5,
+			method: function(y){
+				arguments[0]();
+			}
+		}
+
+		x.method(y,1);
+
+		/*---------------*/
+
+		var x = 'constructor';
+		console.log(x[x](01));
+		console.log('constructor'['constructor'](1))
+
+		/*----------------- Fetching data using newsapi ---------*/
+		/*var apikey = 'key';
+		var mainEl = document.querySelector('main');
+		var dropdownSelector = document.querySelector('#sourceSelector');
+		var defaultDropdownSource = 'the-washington-post';
+		window.addEventListener('load',function(){
+			updateNews();
+			await dropdownSources();
+			defaultDropdownSource.value = defaultDropdownSource;
+			dropdownSources.addEventListener('change',function(e){
+				updateNews(e.target.value);
+			})
+		})
+
+		async function dropdownSources(){
+			var res = await fetch('https://newsapi.org/v1/sources')
+			var resjson = res.json()
+			dropdownSources.innerHTML = resjson.sources.map(src => `<option>${src.name}`).join('/'); 
+		}
+
+		async function updateNews(){
+			var res = await fetch(`https://newsapi.org/v1/articles/apiKey=${apikey}`);
+			var resJson = await res.json()
+			mainEl.innerHTML = resJson.map(createArticle).join('\n');
+		}
+
+
+		function createArticle(el){
+			return `
+				<div class="article">
+					<h2>${el.title}</h2>
+					<p>$el.description</p>
+				</div>
+			`
+		}*/
+		
+		/*if('serviceWorker' in navigator){
+			try{
+				navigator.serviceWorker.register('service-worker.js')
+			}catch(err){
+
+			}
+		}
+
+		// service-worker.js
+		self.addEventListener('install', function(){ // similaryl use 'fetch'
+
+		})*/
+
+		function Employee(name) {
+			this.name = name;
+			this.say = function () {
+				log.add("I am employee " + name);
+			};
+		}
+		function EmployeeFactory() {
+			this.create = function(name) {
+				return new Employee(name);
+			};
+		}
+		function Vendor(name) {
+			this.name = name;
+			this.say = function () {
+				log.add("I am vendor " + name);
+			};
+		}
+		function VendorFactory() {
+			this.create = function(name) {
+				return new Vendor(name);
+			};
+		}
+		// log helper
+		var log = (function () {
+			var log = "";
+			return {
+				add: function (msg) { log += msg + "\n"; },
+				show: function () { alert(log); log = ""; }
+			}
+		})();
+
+		function run() {
+			var persons = [];
+			var employeeFactory = new EmployeeFactory();
+			var vendorFactory = new VendorFactory();
+			persons.push(employeeFactory.create("Joan DiSilva"));
+			persons.push(employeeFactory.create("Tim O'Neill"));
+			persons.push(vendorFactory.create("Gerald Watson"));
+			persons.push(vendorFactory.create("Nicole McNight"));
+			for (var i = 0, len = persons.length; i < len; i++) {
+				persons[i].say();
+			}
+			log.show();
+		}
+
+		//run();
+
+
+
+		function ConstructEmployee(name){
+			this.name = name;
+			this.nameMethod = function(){
+				return ('I am pushed as '+this.name);
+			}
+		}
+
+		function EmployeeFactory(){
+			this.create = function(name){
+				return new ConstructEmployee(name).nameMethod();
+			}
+		}
+
+		function EmployeeExecute(){
+			var totalEmployeeCount = [];
+
+			var emp1 = new ConstructEmployee('Pradeep');
+			var res1 = emp1.nameMethod();
+			totalEmployeeCount.push(res1);
+			var emp2 = new ConstructEmployee('Rajini');
+			var res2 = emp2.nameMethod();
+			totalEmployeeCount.push(res2)
+			var emp1F = new EmployeeFactory();
+			totalEmployeeCount.push(emp1F.create('PradeepFactory'))
+			console.log(totalEmployeeCount);
+		}
+
+		EmployeeExecute();
+
+
+		/*======================== scope of variable, closure (the value of inside scope if "i" is let, or settimeout with "i" overwriting)*/
+
+		var arr = [10,20,30,40];
+		var arrlen = arr.length;
+		for(var i=0;  i < arrlen; i++){
+			setTimeout(function(i){
+				//console.log(`The output is ${arr[i]}`);
+				return function(){
+					console.log(`The output is ${arr[i]}`);
+				}
+			}(i),2000)
+		}
+
+		/*=========== Promise way */
+		function delay(t){
+		  return new Promise(function(resolve){
+		    return setTimeout(resolve, t)
+		  });
+		}
+		function logHi(){
+		  console.log('hi');
+		}
+		delay(2000).then(logHi);
+
+/*======================== function call object value is reference to that object*/ 
+var threatLevel = 1;
+
+function inspireFear(theThreatLevel){
+    theThreatLevel += 100;
+}
+
+inspireFear(threatLevel);
+console.log(threatLevel);  // Whoops! It's still 1!
+
+// In contrast, when a function takes an object, it actually takes a reference to that very object. So changes you make to the object in the function persist after the function is done running
+
+
+/*======================= Method of enqueue and deque stack from "last in first out" to "first in first out"*/
+	/*https://www.interviewcake.com/question/javascript/queue-two-stacks*/
+	function QueueToStacks(){
+		this.inStack = [];
+		this.outStack = [];
+	}
+
+
+	QueueToStacks.prototype.enqueueMeth = function(item){
+		this.inStack.push(item);
+	}
+
+	QueueToStacks.prototype.dequeMeth = function(){
+		if(this.outStack.length == 0){
+			for(;this.inStack.length>0;){
+				var inStackPop = this.inStack.pop();
+				this.outStack.push(inStackPop);
+			}
+
+		}
+		return this.outStack.pop();
+	}
+	var enqueue1 = new QueueToStacks();
+	enqueue1.enqueueMeth('one');
+
+	enqueue1.enqueueMeth('two');
+
+	enqueue1.enqueueMeth('three');
+
+	enqueue1.enqueueMeth('four');
+
+	console.log(enqueue1);
+
+	enqueue1.dequeMeth();
+	console.log(enqueue1);
+
+
+	var ex1 = ['one','two','three','four'];
+	console.log(ex1.pop());
+	console.log(ex1.slice());
+
+
+	/*=================== Fibonacci Series */
+	var fibonacci_call = function(n){
+		if((n == 0) || (n ==1)) {return n; }
+		else if(n > 1){
+			return fibonacci_call(n - 1) + fibonacci_call(n-2);
+		}
+	}
+	console.log(fibonacci_call(1))
+
+	/*================== Inheritance */
+	// Does JavaScript has inheritance? 
+	var o = {
+		a: 2,
+		m : function(b){
+			return this.a + 1;
+		}
+	}
+
+	var p = Object.create(o);
+	p.a = 12;
+	p.m(); // returns 13
+
+	/*============== difference between java & javascript 
+	//Java	JavaScript
+	--------------------------------------------- */
+	/*Class Class-free
+	Strongly-typed	Loosely-typed
+	Static object	Dynamic object
+	Classical Inheritance Prototypal Inheritance 
+	Classes	Functions
+	Constructors	Functions
+	Methods	Functions*/
+
+
+	/*======================= Palindrome*/
+	function palind(str){
+		return (str == str.split('').reverse().join(''))
+	}
+	console.log("The result of palindrome is "+palind('madam'));
+	console.log("The result of palindrome is "+palind('pradeep'));
+
+	/*=============*/
+
+	var memo = [];
+
+	function fibonacci(n) {
+	   if(memo[n]){    
+	    return memo[n];
+	   }
+	   else if (n <= 1){
+	     return 1;
+	   }else{
+	     return fibonacci(n-2) + fibonacci(n-1);
+	   }
+	}
+
+	console.log("The result of fibonacci is "+fibonacci(10))
+
+	/*============ Object Equality */
+	var objectA = {name:"Pradeep", age: "25"};
+	var objectB = {name:"Pradeep", age: "25"};
+
+	function checkObjectEquality(objectA,objectB){
+		var objectAkeys = Object.getOwnPropertyNames(objectA);
+		var objectBkeys = Object.getOwnPropertyNames(objectB);
+		console.log(objectAkeys+","+objectBkeys);
+
+		if(objectAkeys.length != objectBkeys.length){
+			return false;
+		}
+		for(var i in objectAkeys){
+			if(objectA[objectAkeys[i]] != objectB[objectAkeys[i]]){
+				return false;
+			}
+		}
+		return true;
+	}
+	console.log(checkObjectEquality(objectA,objectB));
+
+	/*================== Next day date */
+	var presentDay = new Date();
+	console.log(presentDay);
+
+	Date.prototype.nextDay = function(){
+		var today = presentDay.getDate();
+		console.log(today);
+		return new Date(this.setDate(today + 1));
+
+	}
+	console.log(presentDay.nextDay())
+
+	/*==================== find value in array of objects and how to get object array*/
+	var arrObj = [
+	{name: "one", age: 45, dest: 'dest 1', exp: 5},
+	{name: "two", age: 23, dest: 'dest 2', exp: 2},
+	{name: "three", age: 56, dest: 'dest 3', exp: 14},
+	{name: "four", age: 4, dest: 'dest 4', exp: 0},
+	]
+	console.log(Object.prototype.toString.call(arrObj))
+
+	for(var i=0; i < arrObj.length; i++){
+		console.log(arrObj[i])
+		var obj = arrObj.find(function(o){
+			return o.name == "four";
+		})
+
+		console.log(obj);
+	}
+
+	/*====================== Simple todo List */
+
+
+	</script>
+</body>
+</html>

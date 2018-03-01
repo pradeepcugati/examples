@@ -1,0 +1,170 @@
+.custom-panel{
+	font-size:0.8125rem;
+	border: 1px solid #eaeaea;
+	margin-bottom: 40px;
+	padding: 0 20px 30px 20px;
+
+	.custom-filter{
+		h4{
+			font-size:0.875rem;
+		}
+		&.filter-price{
+			.filter-price-range{
+				display: flex;
+				height: 50px;
+				align-items:center;
+				justify-content:center;
+				input[disabled="disabled"]{
+					max-width: 40px;
+				    max-height: 20px;
+				    width: auto;
+				    height: auto;
+				    border: 0;
+				    margin: 0;
+				}
+			}
+		}
+		.list-group-item{
+			display:block;
+			padding:5px;
+			&.all{
+				span{
+					visibility: hidden;
+					font-size:0.875rem;
+					font-weight: bold;
+				}
+			}
+			label input[type="checkbox"],label input[type="radio"]{
+				position:static;
+				opacity:1;
+				margin-right: 5px;
+			}
+
+			&:last-child{
+				position:relative;
+				&::after{
+					background-color: rgba(0,0,0,0.1);
+					height:1px;
+					bottom:-10px;
+					left:0;
+					width:100%;
+					position:absolute;
+					content:'';
+				}
+
+			}
+			
+		}
+
+		&.filter-category{
+			&:last-child{
+				position:relative;
+				&::after{
+					background-color: $white;
+					height:1px;
+					bottom:-10px;
+					left:0;
+					width:100%;
+					position:absolute;
+					content:'';
+				}
+			}
+		}
+	}	
+}
+
+
+.custom-block-container{
+	margin-top:10px;
+}
+.custom-container{
+	.custom-toolbar{
+		border:1px solid $lightgrey;
+		padding:10px;
+	}
+	.custom-block-cards{
+		.card.custom-card{
+			.card-content{
+				padding:4px;
+			}
+			.card-image{
+				position:relative;
+
+				.card-action{
+					position:absolute;
+					bottom:20px;
+					padding:0;
+					font-size:0.8125rem;
+					width: 100%;
+    				text-align: center;
+
+					a{
+						color: $white;
+						@include square(30px);
+						@include roundedCorners(30);
+						margin-right:5px;
+						position:relative;
+						background-color: rgba(0,0,0,0.8);
+						opacity:0;
+						bottom: -30px;
+						display: inline-flex;
+						align-items: center;
+					    justify-content: center;
+					}
+				}
+			}
+
+			&:hover{
+				.card-action{
+
+					a{
+						&:nth-child(1){
+							animation: moveLess 0.2s forwards;
+						}
+						&:nth-child(2){
+							animation: moveLess 0.3s forwards;
+						}
+						&:nth-child(3){
+							animation: moveLess 0.4s forwards;
+						}
+
+					}
+				}
+			}
+			.card-title{
+				font-size:0.8125rem;
+				font-weight:bold;
+				margin-bottom:0;
+				text-align:center;
+			}
+			.card-price{
+				color: darken($lightgrey,10%);
+				font-size:0.8125rem;
+				text-align:center;
+			}
+		}
+	}
+}
+
+@keyframes moveLess{
+	0% {
+		bottom: -30px;
+		opacity:0;
+	}
+	50% {
+		bottom: -15px;
+		opacity: 0.5;
+	}
+	100% {
+		bottom: 0;
+		opacity: 1;
+	}
+}
+
+
+@keyframes example {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+}

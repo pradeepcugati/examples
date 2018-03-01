@@ -1,0 +1,47 @@
+
+@charset 'UTF-8';
+@import "compass";
+
+// ----------------------------------------------------------------------
+  // Layout
+// ----------------------------------------------------------------------
+
+@mixin square($val){
+	width: $val;
+	height: $val;
+}
+
+@import "helpers/variables";
+@import "helpers/mixins";
+
+@import "layout/header";
+@import "layout/footer";
+@import "layout/sidebar";
+@import "layout/cards";
+@import "layout/slider";
+@import "layout/forms";
+@import "layout/buttons";
+
+@import "pages/home";
+@import "pages/category_listing";
+@import "pages/static";
+
+html, body {
+  //font-family: $system-font;
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { max-width: 100%; }
+
+
+
+
+
+

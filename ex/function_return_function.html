@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		
+		var adderMethod = function(a,b){
+			var addMeth = function(){
+				return a + b;
+			}
+			return addMeth;
+		}
+
+		var res1 = adderMethod(20,35);
+		console.log(res1());
+	</script>
+</body>
+</html>

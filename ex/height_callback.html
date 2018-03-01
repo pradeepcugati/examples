@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>::: Jquery height callback :::</title>
+</head>
+<style>
+	.height-cb{
+		height: 200px;
+		width:400px;
+		display: inline-block;
+	}
+</style>
+<body>
+	<div class="height-cb">
+		Height Measurement
+	</div>
+<script src="jquery.min.js"></script>
+<script>
+	(function(){
+		var hcb = $('.height-cb');
+		console.log($(hcb).height())
+	})()
+</script>
+</body>
+</html>

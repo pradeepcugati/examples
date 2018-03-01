@@ -1,0 +1,77 @@
+/* line 3, ../sass/layout/_header.scss */
+header nav .brand-logo {
+  color: #4a4a4a;
+  font-weight: 200;
+}
+/* line 9, ../sass/layout/_header.scss */
+header nav ul li a {
+  color: #FFFFFF;
+  font-weight: 300;
+}
+/* line 13, ../sass/layout/_header.scss */
+header nav ul li.active {
+  background-color: #EEEEEE;
+}
+/* line 19, ../sass/layout/_header.scss */
+header nav.lightgreen {
+  background-color: #23d0c1;
+}
+
+/* line 1, ../sass/pages/_home.scss */
+.parallax-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* line 5, ../sass/pages/_home.scss */
+.parallax-container h1 {
+  color: #c9f6f2;
+  font-size: 3.2rem;
+  text-shadow: 1px 2px 2px #000;
+}
+/* line 11, ../sass/pages/_home.scss */
+.parallax-container h5 {
+  color: #e6e6e6;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+  background-color: rgba(8, 9, 9, 0.4);
+}
+/* line 19, ../sass/pages/_home.scss */
+.parallax-container.top-banner h5 {
+  background-color: transparent;
+}
+
+/* line 26, ../sass/pages/_home.scss */
+.custom-tip-services h2 {
+  color: #147970;
+  text-shadow: 1px 10px 2px #72e7dd;
+}
+/* line 30, ../sass/pages/_home.scss */
+.custom-tip-services h4 {
+  font-size: 2rem;
+  color: #1ba598;
+}
+/* line 34, ../sass/pages/_home.scss */
+.custom-tip-services h5 {
+  font-size: 1.2rem;
+  color: #1ba598;
+  min-height: 2rem;
+}
+
+/* line 24, ../sass/default.scss */
+html, body {
+  font-size: 100%;
+}
+
+/* line 29, ../sass/default.scss */
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* line 36, ../sass/default.scss */
+img, svg {
+  max-width: 100%;
+}

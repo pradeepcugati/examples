@@ -1,0 +1,31 @@
+.custom-category-detail{
+	.custom-order{
+		.order-content{
+			.order-title{
+				padding:5px;
+				span:nth-child(1){
+					width:40%;
+					display: inline-block;
+					font-weight:bold;
+				}	
+				span:nth-child(2){
+					width: 60%;
+					display: inline-block;
+				}
+				button{
+					margin-top:10px;
+				}
+			}
+			
+		}
+	}
+
+	.custom-card{
+		.card-reveal{
+			p{
+				margin:0;
+				font-size:0.8125rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,59 @@
+header{
+	nav{
+		.brand-logo{
+			color:$grey;
+			font-weight:200;
+		}
+		ul{
+			li{
+				a{
+					color: $white;
+					font-weight:300;
+				}
+				&.active{
+					background-color: $lightgrey;
+				}
+			}
+			
+		}
+		&.lightgreen{
+			background-color: darken($lightgreen,40%);
+			
+		}
+		nav{
+			@include box-shadow(0,0,0,0,#000);
+			.dropdown-button{
+
+			}
+		}
+		i{
+					height: auto;
+					line-height:1.5em;
+				}
+
+		.input-field{
+			&.active{
+				width:200px;
+				input[type="search"]{
+					width:100px;
+					padding-right:50px;
+					~ i{
+						right:0;
+					}
+				}		
+			}
+			
+			label{
+				height: auto;
+				i{
+					height: auto;
+					line-height:1.5em;
+				}
+			}
+
+		}
+
+	}
+	
+	
+}

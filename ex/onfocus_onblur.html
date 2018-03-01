@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<form name="searchform" id="search-form">
+	   <div>
+	       <b>Search</b>
+	       <input type="text" name="txtInput" title="Enter the terms you wish to search for." />
+	       <input type="submit" value="GO!" class="submit" style="cursor: pointer;" />
+	   </div>
+	</form>
+
+	<script>
+		(function(){
+			var formName = document.getElementById('search-form');
+			var inputField = formName.txtInput;
+			var focusMethod = function(){
+				inputField.style.backgroundColor = 'rgba(255,255,255,1)';
+			}
+			var blurMethod = function(){
+				inputField.style.backgroundColor = 'rgba(6,6,6,0.2)';	
+			}
+			inputField.style.backgroundColor = 'rgba(6,6,6,0.2)';
+			inputField.onfocus = focusMethod;
+			inputField.onblur = blurMethod;
+
+
+		})()
+	</script>
+</body>
+</html>

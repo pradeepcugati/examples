@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="divName1"></div>
+	<script>
+		(function(){
+			var el = document.getElementById('divName1');
+			for(var i=0; i < 1000000; i++){
+				el.innerHTML+= i+", ";
+			}
+
+		})();
+	</script>
+</body>
+</html>

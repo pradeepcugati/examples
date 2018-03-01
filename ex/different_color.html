@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<div id="squares"></div>
+	<script>
+		var Square = function(id,size){
+			this.id = id;
+			this.size = size;
+			//this.el = null;
+			this.display = function(){
+				this.el = document.createElement('div');
+				this.el.setAttribute('id',this.id);
+				this.el.style.width = this.size+"px";
+				this.el.style.height = this.size+"px";
+				this.el.innerHTML = "<p>"+this.id+"</p>";
+				document.getElementById('squares').appendChild(this.el);
+			}
+
+			this.bigger = function(size){
+				if(this.el){
+					this.el.style.width = size+"px";
+					this.el.style.height = size+"px";
+					return this;	
+				}
+				
+			}
+
+
+			this.color = function(clr){
+				this.el.style.backgroundColor = clr;
+			}
+
+
+		}
+
+		var s = new Square('small',20);
+		/*s.el.onclick = function(){
+			var res = s.display();
+			console.log(res);
+			document.getElementById('squares').innerHTML = res;
+		}*/
+		s.display();
+		s.el.onclick = function(){
+			s.bigger(100);
+		}
+
+
+	</script>
+</body>
+</html>

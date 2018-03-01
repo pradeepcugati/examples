@@ -1,0 +1,79 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>To-Do</title>
+</head>
+<body>
+
+    <div class="container">
+      <div id="container" class="col-md-8 col-md-offset-2">  </div>
+    </div>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+	class MyComponent extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				select : false
+			}
+		}
+
+		handleSelect(item,e){
+			console.log(e.target.textContent)
+			console.log(this.state.select)
+
+			if(this.state.select !== e.target.textContent){
+				this.setState({select: e.target.textContent});
+			} else{
+				this.setState({select: false});
+			}
+		}
+		
+		render(){
+			return (
+				<div>
+					<Button highlight={this.state.select} selectItem={this.handleSelect.bind(this)} value="one" />
+					<Button highlight={this.state.select} selectItem={this.handleSelect.bind(this)} value="two" />
+					<Button highlight={this.state.select} selectItem={this.handleSelect.bind(this)} value="three" />
+					<Button highlight={this.state.select} selectItem={this.handleSelect.bind(this)} value="four" />
+				</div>
+			)
+		}
+	}
+	class Button extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				select : false
+			}
+		}
+
+		render(){
+			var {selectItem,value, highlight} = this.props;
+			console.log("hi"+highlight);
+			var style;
+			if(highlight == value){
+				style = {
+					backgroundColor: 'red'
+				}
+			} else{
+				style= {
+					backgroundColor: 'transparent'
+				}
+			}
+			return (
+				<button style={style} onClick={(e) => {selectItem(value,e)}}>{value}</button>
+			)
+		}
+	}
+	ReactDOM.render(
+	    <MyComponent />,
+	    document.getElementById('container')
+	);
+</script>
+</body>
+</html>

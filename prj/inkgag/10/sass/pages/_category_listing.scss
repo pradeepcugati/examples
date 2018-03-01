@@ -1,0 +1,217 @@
+.custom-panel{
+	font-size:0.8125rem;
+	border: 1px solid #eaeaea;
+	margin-bottom: 40px;
+	//padding: 0 20px 30px 20px;
+
+	.custom-filter{
+		padding:20px;
+		h4{
+			font-size:0.875rem;
+			padding-top:20px;
+		}
+		&.filter-applied{
+			
+			padding-top:20px;
+			.list-group-item{
+				cursor: pointer;
+
+				&:last-child{
+					&::after{
+						display: none;
+					}
+					.item-name{
+						visibility: hidden;
+					}
+				}
+			}
+		}
+		&.filter-price{
+			background-color: $lightgrey;
+			.noUi-horizontal{
+				height:8px;
+
+				.noUi-handle{
+					width:20px;
+					height:20px;
+					@include roundedCorners(20);
+					&::before,&::after{
+						display: none;
+					}
+				}
+			}
+			.filter-price-range{
+				display: flex;
+				align-items:center;
+				justify-content:center;
+				position:relative;
+				margin-top:15px;
+				&::before{
+					position:absolute;
+					content: '-';
+					left: 45%;
+					top:0px;
+				}
+				input[disabled="disabled"]{
+					color: $black;
+					max-width: 40px;
+				    max-height: 20px;
+				    width: auto;
+				    height: auto;
+				    border: 0;
+				    margin: 0;
+				}
+			}
+		}
+		.list-group-item{
+			display:block;
+			padding:5px;
+			.item-name{
+				color: $grey;
+			}
+			.secondary-content{
+				color: $grey;
+				&:hover,&:focus, &:active{
+					color: lighten($grey,10%);
+				}
+			}
+			label input[type="checkbox"],label input[type="radio"]{
+				position:static;
+				opacity:1;
+				margin-right: 5px;
+			}
+
+			&:last-child{
+				position:relative;
+				&::after{
+					background-color: rgba(0,0,0,0.1);
+					height:1px;
+					bottom:-15px;
+					left:0;
+					width:100%;
+					position:absolute;
+					content:'';
+				}
+
+			}
+			
+		}
+
+		&.filter-artist{
+			.list-group-item{
+				&:last-child{
+					&::after{
+						display: none;
+					}
+				}
+			}
+			
+		}
+	}	
+}
+
+
+.custom-block-container{
+	margin-top:10px;
+}
+.custom-container{
+	.custom-toolbar{
+		border:1px solid $lightgrey;
+		padding:10px;
+		a{
+			margin-right:10px;
+			color: $grey;
+		}
+	}
+	.form-control{
+		display: block;
+		height: auto;
+	}
+	.custom-block-cards{
+		.card.custom-card{
+			@include box-shadow(0px, 0px, 0px, 0px, #000);
+			.card-content{
+				padding:4px;
+			}
+			.card-image{
+				position:relative;
+
+				.card-action{
+					border-top:0;
+					position:absolute;
+					bottom:20px;
+					padding:0;
+					font-size:0.8125rem;
+					width: 100%;
+    				text-align: center;
+
+					a{
+						color: $white;
+						@include square(30px);
+						@include roundedCorners(30);
+						margin-right:5px;
+						position:relative;
+						background-color: rgba(0,0,0,0.8);
+						opacity:0;
+						bottom: -30px;
+						display: inline-flex;
+						align-items: center;
+					    justify-content: center;
+					}
+				}
+			}
+
+			&:hover{
+				.card-action{
+
+					a{
+						&:nth-child(1){
+							animation: moveLess 0.2s forwards;
+						}
+						&:nth-child(2){
+							animation: moveLess 0.3s forwards;
+						}
+						&:nth-child(3){
+							animation: moveLess 0.4s forwards;
+						}
+
+					}
+				}
+			}
+			.card-title{
+				font-size:0.8125rem;
+				font-weight:bold;
+				margin-bottom:0;
+				text-align:center;
+			}
+			.card-price{
+				color: darken($lightgrey,10%);
+				font-size:0.8125rem;
+				text-align:center;
+			}
+		}
+	}
+}
+
+@keyframes moveLess{
+	0% {
+		bottom: -30px;
+		opacity:0;
+	}
+	50% {
+		bottom: -15px;
+		opacity: 0.5;
+	}
+	100% {
+		bottom: 0;
+		opacity: 1;
+	}
+}
+
+
+@keyframes example {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+}

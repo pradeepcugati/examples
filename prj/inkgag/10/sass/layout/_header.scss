@@ -1,0 +1,120 @@
+.header-wrap{
+	position: static;
+	width:100%;
+	.temp-header{
+		height: 0;
+		display: block;
+			width:100%;
+			
+	}
+	.page-header{
+		z-index:2;	
+		position:absolute;
+		margin-top:50px;
+		padding-top:40px;
+
+		.brand{
+			padding-left:40px;
+		}
+		&.header-active{
+			position:fixed;
+			top:-80px;
+			background-color: rgba(255,255,255, 0.8);
+			border-bottom: 2px solid rgba(0,0,0,0.1);
+		}
+	}
+	.temp-header{
+		height:66px;
+	}
+
+	nav{
+		@include box-shadow(0px, 0px, 0px, 0px, #000);
+		.brand-logo{
+			color:$grey;
+			font-weight:200;
+		}
+		ul.custom-first{
+			.dropdown-content{
+				li{
+					a{
+						&:hover,&:focus,&:active,&.active{
+							color:$grey;
+							background-color: $white;
+						}
+					}
+				}
+			}
+			> li{
+				a{
+					color: $grey;
+				}
+
+				> a{
+					color: $grey;
+					font-weight:300;
+					border-top:2px solid transparent;
+					@include transition(border-color 1s,color 0.5s);
+
+					&:hover,&:focus,&:active,&.active{
+						background-color: transparent;
+						color:$grey;
+						border-top:2px solid $grey;
+					}
+				}
+
+			}
+		}
+		ul.custom-second{
+			padding-right:40px;
+			li{
+				a{
+					color: $grey;
+					font-weight:300;
+					//border-top:2px solid $white;
+					@include transition(color 1s);
+					&:hover,&:focus,&:active,&.active{
+						background-color: transparent;
+						color: $grey;
+						//border-top:2px solid $grey;
+					}
+				}
+			}
+		}
+		&.lightgreen{
+			background-color: darken($lightgreen,40%);
+			
+		}
+		nav{
+			@include box-shadow(0,0,0,0,#000);
+		}
+		i{
+			height: auto;
+			line-height:1.5em;
+		}
+
+		.input-field{
+			&.active{
+				width:200px;
+				input[type="search"]{
+					width:100px;
+					padding-right:50px;
+					~ i{
+						right:0;
+					}
+				}		
+			}
+			
+			label{
+				height: auto;
+				i{
+					height: auto;
+					line-height:1.5em;
+				}
+			}
+
+		}
+
+	}
+	
+	
+}

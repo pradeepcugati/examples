@@ -1,0 +1,105 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>To-Do</title>
+</head>
+<body>
+
+    <div class="container">
+      <div id="container" class="col-md-8 col-md-offset-2">  </div>
+    </div>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+	var AppTitle = ({count}) => {
+
+		return (
+			<div>
+				Title Goes here {count}
+			</div>
+		)
+	}
+
+	var AppForm = (param) => {
+		let input;
+		
+		console.log("props"+param);
+		return (
+			<div>
+				<form action="#" onSubmit={(e) => { param.addTo(e,input.value); input.value = "";}}>
+					<input type="text" ref={node => { input = node}} />
+					<button>Add</button>
+				</form>
+			</div>
+		)
+	}
+	var AppList = ({list,editme, removeme}) => {
+		var res = list.map((item,i) => { 
+			return (
+			<li key={item.id}>
+				{item.text}
+				<span onClick={(e) => {editme(item,e)}}>Edit {item.id}</span>
+				<span onClick={() => {removeme(item.id)}}>Close X</span>
+			</li>)
+		})
+		return (
+			<div>
+				{res}
+			</div>
+		)
+	}
+
+
+	class App extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				data: [], id: 0, obj:{}
+			}
+		}
+		addTo(e,val){
+			e.preventDefault();
+			this.setState({id: this.state.id + 1})
+			var obj = {id: this.state.id, text: val};
+			this.state.data.push(obj);
+			this.setState({data: this.state.data});
+	
+		}
+		handleEdit(obj,e){
+			e.preventDefault();
+			console.log(obj);
+			var obj = obj;
+			this.setState({obj:obj});
+		}
+		handleRemove(id){
+			var remaining = this.state.data.filter((item) => {
+				if(item.id !== id){
+					return item;
+				}
+			})
+			this.setState({data: remaining});
+		}
+		render(){
+			return (
+				<div>
+					<AppTitle count={this.state.id} />
+					{AppForm({addTo:this.addTo.bind(this),obj:this.state.obj})}
+					<AppList list={this.state.data} editme={this.handleEdit.bind(this)} removeme={this.handleRemove.bind(this)} />
+				</div>
+			)
+		}
+	}
+	function $(key){
+		return document.getElementById(key);
+	}
+	ReactDOM.render(<App />, $('container'));
+	
+
+</script>
+</body>
+</html>
+
+<!-- this.setState(prevState => {(isToggle: !prevState.isToggle)) -->

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .slides{
+    	width:400px;
+    	height:250px;
+    	overflow:hidden;
+    	margin:0 auto;
+    	position:absolute;
+    }
+    ul>li {
+        width: 550px;
+        height: 240px;
+        display: inline-block;
+        float: left;
+    }
+
+    ul li {
+        width: inherit;
+        height: inherit;
+        display: none;
+    }
+    ul li img{
+    	width:100%;
+    	height:100%;
+
+    }
+	.slides .bullets{
+		position:absolute;
+		left:40%;
+		top:100px;
+	}
+    .bullets button {
+        background: orange;
+        border-radius: 4px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border: 0;
+        margin-right: 10px;
+    }
+    .slides .nav{
+    	position:relative;
+    }
+    .slides .nav button:nth-child(1),.slides .nav button:nth-child(2){
+    	position:absolute;
+    	left:2%;
+    	top:48%;
+    }
+	.slides .nav button:nth-child(2){
+		left:350px;
+	}
+    </style>
+</head>
+<body>
+    <div class="slides">
+        <ul>
+            <li><img src="01.png" alt=""></li>
+            <li><img src="02.png" alt=""></li>
+            <li><img src="03.png" alt=""></li>
+            <li><img src="01.png" alt=""></li>
+            <li><img src="02.png" alt=""></li>
+            <li><img src="03.png" alt=""></li>
+        </ul>
+        <div class="bullets">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+        </div>
+        <div class="nav">
+        	<button onclick="slider(-1)">Prev</button>
+        	<button onclick="slider(+1)">Next</button>
+        </div>
+    </div>
+
+    <script>
+    	var indexVal = 0;
+    	var slides = document.getElementsByClassName('slides');
+    	var liEl = document.getElementsByTagName('li');
+    	console.log(liEl);
+    	var n = indexVal;
+    	var elCount = slides[0].children[0].childElementCount;
+    	var slider = function(indexVal){
+			console.log(liEl[indexVal]);
+			
+			/*if(indexVal == 0){
+				n = 0;
+			} else if(indexVal > elCount){
+				n = 0;
+			} else if(indexVal < 0){
+				n = elCount;
+			}*/
+			for(var i=0; i < liEl.length; i++){
+			 liEl[i].style.display = 'none';
+			}
+			n += indexVal;
+
+			
+			console.log("hi "+n);
+			if(n >= elCount){
+				n = 0;
+			}
+
+			liEl[n].style.display = 'block';
+
+    	}
+    	slider(indexVal);
+    </script>
+</body>
+</html>

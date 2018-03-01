@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="divname1"></div>
+	<div id="divname2"></div>
+	<div id="divname3"></div>
+
+	<script>
+		
+		var MakeObjMethod = function(x,y){
+			return {
+				z: 10,
+				adder: function(){
+					return x + y + this.z;
+				}
+			}
+		}
+		var m1 = new MakeObjMethod(4,5);
+		console.log(m1);
+
+
+		window.onload=function(){
+			var max_length = 3;
+			for(var i=1; i <= max_length; i++){
+				var el = document.getElementById('divname'+i);
+				el.innerHTML = "<p>"+i+"</p>";
+				el.onclick = (function(i1){
+					return function(){
+						console.log("you clicked on "+i1);	
+					}
+					
+				})(i)
+			}
+		}
+			
+	</script>
+</body>
+</html>

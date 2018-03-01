@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+    body {
+        padding-top: 5rem;
+    }
+
+    .small {
+        font-size: 80%;
+        color: grey;
+    }
+
+    .applybr {
+        display: block;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    h5 {}
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+    <!-- https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/ -->
+    <!-- https://developer.mozilla.org/en-US/docs/Web/Events -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <main role="main" class="container">
+        <div class="block-section block-0" style="display: none">
+            <h2>Chrome Browser Extensions</h2>
+            <ul>
+                <li>- Web Server for Chrome </li>
+                <li>- ColorZilla</li>
+                <li>- Page ruler</li>
+                <li>- Form Fillers</li>
+                <li>- JSON Viewer</li>
+                <li>- Developer Tools</li>
+            </ul>
+        </div>
+        <div class="block-section block-1">
+            <h2>Tool to Check PWA Status <span class="small applybr">Tool which ensures the PWA checklist been compromised in the website.</span></h2>
+            <p>Light house is the Chrome Extension to give a note on</p>
+            <ul>
+                <li>PWA</li>
+                <li>Performance</li>
+                <li>Accessibility</li>
+                <li>Best Practices</li>
+            </ul>
+        </div>
+        <div class="block-section block-2">
+            <h2>Why to use PWA</h2>
+            <ul>
+                <li>
+                    <strong>Make an app icon</strong>
+                    <ul>
+                        <li>Put the icons in a folder next to the rest of your site.</li>
+                        <li>Add the code it gave you to the
+
+                            <head> of you index.html file</li>
+                        <li>Put them all in a sub folder so had to add “icons/” to each line.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Web App Manifest</strong>
+                    <ul>
+                        <li>manifest.json { "lang": "en-GB", "start_url": "/", "display": "standalone" }
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Service Worker</strong>
+                    <ul>
+                        <li>
+                            <strong>Register Service Worker (Inside script Tag) </strong>
+                            <br> if (‘serviceWorker’ in navigator) { window.addEventListener(‘load’, function() { navigator.serviceWorker.register(‘/sw.js’).then( function(registration) { // Registration was successful console.log(‘ServiceWorker registration successful with scope: ‘, registration.scope); }, function(err) { // registration failed :( console.log(‘ServiceWorker registration failed: ‘, err); }); }); }
+                        </li>
+                        <li>Add sw-toolbox to your project. You just need to add this file to your root folder.</li>
+                        <li>
+                        	<strong>Create a new file, call it “sw.js”</strong>
+                        		‘use strict’;
+								importScripts(‘sw-toolbox.js’); toolbox.precache([“index.html”,”style/style.css”]); toolbox.router.get(‘/images/*’, toolbox.cacheFirst); toolbox.router.get(‘/*’, toolbox.networkFirst, { networkTimeoutSeconds: 5});
+
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                	<strong>The main benefits</strong>
+					
+					<ul> 
+						<li>
+
+							<strong>Offline mode</strong> <br>As we know in some certain cases, when there is no internet connection, websites are absolutely limited to be displayed properly. On the other hand, mobile apps are often self-contained, allowing users to browse the app when not online, thus increasing the engagement and availability greatly. </li>
+						<li> <strong>Improved performance</strong> <br>Progressive web apps are faster because of the way that Progressive Web Apps work significantly faster due to the way the underlying technology caches and serves text, stylesheets, images and other content on the websites.</li>
+						<li><strong>Zero install</strong> <br>Compared to mobile applications, when users install PWA’s, there are no long download times, and visitors are not routed through Google Play or the App Store, but directly downloading the app onto their device. </li>
+						<li><strong>Specific hardware features, for example, push notifications</strong><br>The next benefit of progressive web apps is the option of implementing different useful features, such as push notifications</li>
+						<li><strong>No app store submission</strong> <br>Progressive web apps don’t need to be published in Google Play, Windows Phone Apps or Apple’s App Store. Less time-consuming actions. </li>
+						<ul>
+	<li><a href="https://lite.twitter.com/" target="_blank">Twitter Lite</a> saw a 65% increase in pages per session, 75% in Tweets, and a 20% decrease in bounce rate. Twitter Lite loads in under 3 seconds for repeat visits even on slow networks.</li>
+	<li><a href="https://www.forbes.com/" target="_blank">Forbes’</a>&nbsp;progressive web app test saw 2× increase in average user session length, 6× completion rate, and 20% more impressions. Loads in 0.8s down from 3 to 12s.&nbsp;Forbes’ PWA loads in 2.5 seconds on mobile compared to 6.5 seconds for its previous site. Impressions per visit are up 10%.&nbsp;Forbes redesigned their mobile experience as a PWA resulting in 43% increase in sessions per user, add viewability up 20%, and 100% more engagement.</li>
+	<li><a href="http://www.lancome.es/‎" target="_blank">Lancôme’s</a> progressive web app features a 17% increase in conversions, a 51% increase in mobile sessions overall and a 53% increase on iOS alone. Notifications contribute a 18% open rate and a 12% increase in recovered carts. 8% of people responding to a notification make a purchase.&nbsp;Since launching their PWA, Lancôme’s mobile sales have increased 16% year over year with overall speed increases of 50%.</li>
+	<li>Google found that Progressive Web App install banners convert 5-6× more often than native install banners.<br>
+ <a href="http://www.alibaba.com" target="_blank">Alibaba</a> increased conversions on the mobile web by 76%, with 14% more monthly active users on iOS and 30% more on Android.</li>
+	<li><a href="http://www.aliexpress.com" target="_blank">AliExpress</a> has been on the forefront of mobile commerce, and based on the growth they see in this area they quickly developed their own PWA. With a reported 104% increase in conversion rates for new users gained with their Progressive Web App compared to their traditional website and mobile app, things are looking quite well for the Chinese company.</li>
+</ul>
+
+					</ul>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </main>
+    <!-- /.container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <!-- <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script> -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!--  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> -->
+</body>
+<!-- 
+		https://en.wikipedia.org/wiki/Progressive_web_app
+	    https://developers.google.com/web/progressive-web-apps/checklist 
+	-->
+</body>
+
+</html>

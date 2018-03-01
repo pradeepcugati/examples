@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+         
+         //prefixes of window.IDB objects
+         /*window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+         window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange*/
+         
+		if (!window.indexedDB) {
+			window.alert("Your browser doesn't support a stable version of IndexedDB.")
+		}
+
+		var personData = [
+						{id:'01',name: 'Name 1',age: 21, email: "email1@email.com"},
+						{id:'02',name: 'Name 2',age: 22, email: "email2@email.com"},
+						{id:'03',name: 'Name 3',age: 23, email: "email3@email.com"},
+						{id:'04',name: 'Name 4',age: 24, email: "email4@email.com"}
+					]
+
+		var db, objectStore;
+		var req = window.indexedDB.open('test_db',1);
+		req.onsuccess = function(e){
+			db = req.result;
+			console.log('success');
+			readAll(e)
+
+		}
+		req.onerror = function(e){
+			console.log('error creating db');
+		}
+
+		req.onupgradeneeded = function(e){
+			var db = event.target.result;
+            var objectStore = db.createObjectStore("employee", {keyPath: "id"});
+            
+            for (var i in personData) {
+               objectStore.add(personData[i]);
+            }
+		}
+
+		function readAll(e) {
+			
+            var tb = db.transaction("employee").objectStore("employee");
+            console.log(tb.getAll())
+            console.log('get specific ones');
+            console.log(tb.get('02'));
+           /* 
+            objectStore.openCursor().onsuccess = function(event) {
+               var cursor = event.target.result;
+               
+               if (cursor) {
+                  alert("Name for id " + cursor.key + " is " + cursor.value.name + ", Age: " + cursor.value.age + ", Email: " + cursor.value.email);
+                  cursor.continue();
+               }
+               
+               else {
+                  alert("No more entries!");
+               }
+            };*/
+         }
+
+	</script>
+</body>
+</html>

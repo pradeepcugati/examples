@@ -1,0 +1,158 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Pradeep Cugati">
+  <title>To-Do</title>
+</head>
+<body>
+
+    <div class="container">
+      <div id="container" class="col-md-8 col-md-offset-2">  </div>
+    </div>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+	var AppTitle = ({count}) => {
+		return (
+			<div>The List count is {count.length}</div>
+		)
+	}
+
+	class AppForm extends React.Component {
+		constructor(props){
+			super(props);
+			this.state = {
+				item: this.props.item
+			}
+		}
+
+		handleChange(item,e){
+			var item = item;
+				item.text = e.target.value;
+				console.log(item)
+			this.setState({item:item})
+		}
+
+		componentWillReceiveProps(nextProps){
+			//this.state.item.text = nextProps.item.text;
+			this.setState({item: nextProps.item})
+		}
+		
+		render(){
+			var {addForm,editForm, item} = this.props;
+			var res;
+			var currentItem;
+			if(Object.keys(item).length < 1){
+				res = (
+						<div>
+							<form action="#" onSubmit={(e) => {addForm(this.inputname.value,e); this.inputname.value="";}}>
+								<input type="text" ref={(inputname) => {this.inputname = inputname}}/>
+								<button>Add</button>
+							</form>
+						</div>
+					)
+			} else{
+				res = (
+						<div>
+							<form action="#" onSubmit={(e) => {editForm(item,e); this.inputname.value="";}}>
+								<input type="text" value={this.state.item.text} ref={(inputname) => {this.inputname = inputname}} onChange={this.handleChange.bind(this,item)} />
+								<button>Edit</button>
+							</form>
+						</div>
+					)
+			}
+			return (
+				<div>{res}</div>
+			)
+		}
+	}
+
+	class AppList extends React.Component{
+		constructor(props){
+			super(props);
+		}
+
+		render(){
+			var {list,edit,remove} = this.props;
+			var res = list.map((item) => { 
+				return (
+					<li key={item.id}>
+						{item.text}
+						<span onClick={() => edit(item)}>Edit</span>
+						<span onClick={() => remove(item)}>Remove X</span>
+					</li>
+				)
+			})
+			return (
+				<div>
+					{res}
+				</div>
+			)
+		}
+	}
+
+
+	class App extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				data: [], id: 0, item:{}
+			}
+		}
+
+		addForm(val,e) {
+			e.preventDefault();
+			this.setState({id: this.state.id + 1})
+			var obj = {id: this.state.id, text: val};
+			this.state.data.unshift(obj);
+			this.setState({data:this.state.data})
+		}
+
+		editForm(item,e){
+			e.preventDefault();
+			var findIndex = this.state.data.findIndex((itemInList) => {
+				if((item.id) == (itemInList.id)){
+					return itemInList
+				}
+			})
+			//console.log(this.state.data[findIndex], item.text);
+			this.setState({data:this.state.data})
+			this.setState({item: {}})
+		}
+
+		edit(item){
+			this.setState({item:item})
+		}
+
+		remove(item){
+			var remaining = this.state.data.filter((itemInList) => {
+				return (item.id !== itemInList.id)
+			})
+			this.setState({data:remaining})
+		}
+
+		render(){
+			return (
+				<div>
+					<AppTitle count={this.state.data} />
+					<AppForm addForm={this.addForm.bind(this)} item={this.state.item} editForm={this.editForm.bind(this)} />
+					<AppList list={this.state.data} remove={this.remove.bind(this)} edit={this.edit.bind(this)} />
+				</div>
+			)
+		}
+	}
+
+	function $(key){
+		return document.getElementById(key);
+	}
+
+	ReactDOM.render(<App />, $('container'));
+
+</script>
+</body>
+</html>
+
+<!-- this.setState(prevState => {(isToggle: !prevState.isToggle)) -->

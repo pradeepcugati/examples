@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="squares"></div>
+	<!-- <script>
+	var Square = function(id,size){
+		this.id = id;
+		this.size = size;
+		this.displayMeth = function(){
+			var div1 = document.createElement('div');
+			div1.setAttribute('id',this.id);
+			div1.setAttribute('class','square');
+			div1.style.width = size+"px";
+			div1.style.height = size+"px";
+			div1.innerHTML = "<p>"+this.id+"</p>";
+			document.getElementById('squares').appendChild(div1);	
+		}
+		
+	
+	}
+	
+	
+	function recursionMethod(n){
+		if(n == 0){
+			return;
+		}
+	
+		while(n > 0){
+			var s = new Square(("s"+n), n * 10);
+			s.displayMeth();
+			n--;
+		}
+	
+	
+	}
+	
+	recursionMethod(5);
+	</script> -->
+
+	<script>
+		var Square = function(id,size){
+			this.id = id;
+			this.size = size;
+
+			this.display = function(){
+				var div = document.createElement('div');
+				div.setAttribute('id',this.id);
+				div.setAttribute('class','square');
+				div.innerHTML = "<p>"+this.id+"</p>";
+				document.getElementById('squares').appendChild(div);
+			}
+
+		}
+		var recursionMethod = function(n){
+			var i;
+			if(n == 0){
+				return;
+			}
+			/*while(n>0){
+				var sq = new Square('s'+n,5);
+				sq.display();
+				n--;
+			}*/
+			var sq = new Square('s'+n,5);
+			sq.display();
+			recursionMethod(n-1);
+
+		}
+		recursionMethod(5);
+
+	</script>
+</body>
+</html>

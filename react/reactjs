@@ -1,0 +1,266 @@
+
+
+
+In React, attributes are known as props (short for “properties”). Props are how components talk to each other.
+	Eg:
+	class ParentComponent extends React.Component {
+	  render() {
+	    return <ChildComponent message="Hello World"/>;
+	  }
+	}
+	class ChildComponent extends React.Component {
+	  render() {
+	    return <p>And then I said, “{this.props.message}”</p>;
+	  }
+	}
+
+
+Because of this, React’s data flow is unidirectional: data can only go from parent components to their children, not the other way around.
+
+Sometimes though, a component needs to react to data that doesn’t come from a parent component (such as user input for example). And this is where the state comes in.
+
+
+React DOM include - https://reactjs.org/docs/react-dom.html
+	The react-dom package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to. Most of your components should not need to use this module.
+
+	render()
+	hydrate()
+	unmountComponentAtNode()
+	findDOMNode()
+	createPortal()
+-------
+
+Object Destructuring
+	Destructuring allows us to “destructure”, or break down, an object so that we can more easily access the information we care about. 		Let’s say we want to access some data on an object, in the past we would have had to do the following
+	
+	Eg:
+	const info = {
+	  name: 'Spencer',
+	  company: 'Handlebar Labs',
+	  location: {
+	    city: 'Nashville',
+	    state: 'Tennessee',
+	  },
+	};
+	const name = info.name;
+	const city = info.location.city;
+	const state = info.location.state;
+
+	Another Way:
+	const { name, location } = info;
+	const { city, state } = location;
+	// name is Spencer
+	// city is Nashville
+	// state is Tennessee
+	You’ll often see this when accessing information from props, like this:
+
+	const Info = ({ name, location }) => {
+	  <View>
+	    <Text>{name} lives in {location.city}, {location.state}</Text>
+	  </View>
+	};
+
+	One more example with and without destructuring
+	Eg with destructing:		
+		function ModalName({ onClickNext, step }) {
+		  return (
+		    <div>
+		      <h1>Step {step} - Name</h1>
+		      <Button onClick={onClickNext}>Next</Button>
+		    </div>
+		  );
+		}
+	Eg without destructuring:
+		function ModalName(props) {
+		  var onClickNext = props.onClickNext;
+		  var step = props.step;
+
+		  return (
+		    <div>
+		      <h1>Step {step} - Name</h1>
+		      <Button onClick={onClickNext}>Next</Button>
+		    </div>
+		  );
+		}
+------
+
+Spreading
+	Object spreading allows us to copy information from one object to another. It’s a practice you’ll often see when using Redux because of the need for pure functions. Let’s say we have multiple people who work at Handlebar Labs and they’ve all got some of the same basic information. To save time we’ll copy that information from the “template” to an individual’s information.
+
+	Eg:
+	const handlebarLabsInfo = {
+	  company: 'Handlebar Labs',
+	  location: {
+	    city: 'Nashville',
+	    state: 'Tennessee',
+	  },
+	};
+	const spencerInfo = {
+	  ...handlebarLabsInfo,
+	  name: 'Spencer',
+	}
+	console.log(spencerInfo); // { name: 'Spencer', company: 'Handlebar Labs', location: { city: 'Nashville', state: 'Tennessee' } }
+
+-----------------
+
+Passing Arguments to Event Handlers
+	Eg:	
+	<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+	<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+
+-------------------
+
+State Updates May Be Asynchronous
+	React may batch multiple setState() calls into a single update for performance.
+
+	Because this.props and this.state may be updated asynchronously, you should not rely on their values for calculating the next state.
+
+	For example, this code may fail to update the counter:
+
+	// Wrong
+	this.setState({
+	  counter: this.state.counter + this.props.increment,
+	});
+	To fix it, use a second form of setState() that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:
+
+	// Correct
+	this.setState((prevState, props) => ({
+	  counter: prevState.counter + props.increment
+	}));
+
+---------------------
+
+
+
+class MyComponent extends React.Component {
+  handleClick = (e) => {
+    this.setState({clicked: true});
+  }
+  render() {
+    return <a href="#" onClick={this.handleClick}>Click me</a>;
+  }
+}
+
+---------------------------
+
+Spread Attributes
+	Eg:
+	function App1() {
+	  return <Greeting firstName="Ben" lastName="Hector" />;
+	}
+
+	function App2() {
+	  const props = {firstName: 'Ben', lastName: 'Hector'};
+	  return <Greeting {...props} />;
+	}
+
+	Eg 2
+	const Button = props => {
+	  const { kind, ...other } = props;
+	  const className = kind === "primary" ? "PrimaryButton" : "SecondaryButton";
+	  return <button className={className} {...other} />;
+	};
+
+	const App = () => {
+	  return (
+	    <div>
+	      <Button kind="primary" onClick={() => console.log("clicked!")}>
+		Hello World!
+	      </Button>
+	    </div>
+	  );
+	};
+
+
+Include in simple html page:
+	https://medium.com/@to_pe/how-to-add-react-to-a-simple-html-file-a11511c0235f
+
+Start with this
+	https://github.com/reactjs/react-basic
+	https://blog.andrewray.me/reactjs-for-stupid-people/
+	https://jaysoo.ca/2017/04/30/learn-fp-with-react-part-1/
+	http://codetheory.in/tag/react/
+
+Set up
+	http://ccoenraets.github.io/es6-tutorial-react/setup/
+
+	http://reactkungfu.com/react-by-example/
+	https://www.quora.com/What-are-some-good-examples-for-React-js
+
+	https://reactjs.org/community/examples.html
+
+	https://github.com/facebook/react/wiki/examples
+
+	https://github.com/ccoenraets/es6-tutorial-react/blob/master/js/app.js
+
+	https://medium.com/@kayodeniyi/simplest-react-app-setup-a74277b99e43
+
+	https://medium.com/@fastlane80/setup-react-js-with-npm-babel-6-and-webpack-in-under-1-hour-1a714f973506
+
+React Crud
+	https://www.youtube.com/watch?v=S66rHpyU-Eg
+	https://www.youtube.com/watch?v=BncMF2aTL0w
+
+Routing Configuration
+	https://reacttraining.com/react-router/web/example/url-paramshttps://www.youtube.com/watch?v=niCzY8xYIpc
+	https://www.youtube.com/watch?v=niCzY8xYIpc
+	Sub routes - https://www.youtube.com/watch?v=sfvrjwVihFY
+
+examples
+	https://tutorialzine.com/2014/07/5-practical-examples-for-learning-facebooks-react-framework
+
+	https://react.rocks/
+
+Explanation
+	https://reactjs.org/docs/components-and-props.html
+	https://camjackson.net/post/9-things-every-reactjs-beginner-should-know
+
+
+Basic example
+	https://scotch.io/tutorials/create-a-simple-to-do-app-with-react
+	use of ref ; https://reactjs.org/docs/refs-and-the-dom.html
+	https://www.kirupa.com/react/simple_todo_app_react.htm
+
+Redux
+	https://redux.js.org/docs/basics/ExampleTodoList.html
+
+React tutorial for tic tac toe and winner of it
+	https://reactjs.org/tutorial/tutorial.html
+
+https://reactjs.org/docs/jsx-in-depth.html
+
+https://reactjs.org/docs/typechecking-with-proptypes.html
+https://scotch.io/tutorials/learning-react-getting-started-and-concepts
+https://github.com/acdlite/react-fiber-architecture
+https://github.com/reactjs/react-basic
+https://medium.freecodecamp.org/all-the-fundamental-react-js-concepts-jammed-into-this-single-medium-article-c83f9b53eac2
+https://medium.freecodecamp.org/the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3
+http://aimforsimplicity.com/post/13-things-you-need-to-know-about-react/
+https://ant.design/components/modal/
+
+https://www.reactenlightenment.com/what-is-react.html
+
+https://www.icicletech.com/blog/reactjs-free-20-online-tutorials
+
+https://www.youtube.com/watch?v=NheixtwQ4vE&feature=youtu.be
+
+Boiler plate
+	https://github.com/PWA-TW
+	https://github.com/PWA-TW/itunes-search-app/tree/step2-app-shell/src
+	https://github.com/Yomguithereal/react-blessed
+	https://github.com/SpencerCDixon/redux-cli
+	https://react-etc.net/entry/react-gets-official-boilerplate-scaffolding-through-react-cli
+
+
+thought works jinto jose
+	https://github.com/jintoppy/react-training
+	https://github.com/jintoppy?tab=repositories
+
+--------------------------------------------------------------
+Redux
+
+Redux is a predictable state container for JavaScript and comes as an external library which can be used together with front-end frameworks like React, Angular, Ember.js, Backbone etc
+
+MVC 
+This pattern describes a separation between the data (model), the presentation (view) and the application logic (controller).
+

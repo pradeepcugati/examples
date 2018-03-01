@@ -1,0 +1,67 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>To-Do</title>
+</head>
+<body>
+
+    <div class="container">
+      <div id="container" class="col-md-8 col-md-offset-2">  </div>
+    </div>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+<script type="text/babel">
+	class MyComponent extends React.Component{
+		constructor(props){
+			super(props);
+			this.state = {
+				selectedElement : ""
+			}
+		}
+		handleClick(e){
+			this.setState({selectedElement: e.target.textContent})
+		}
+		
+		render(){
+			return (
+				<div>
+					<Button text="one" selectedElement={this.state.selectedElement} clickSelected={this.handleClick.bind(this)}  />
+					<Button text="two" selectedElement={this.state.selectedElement} clickSelected={this.handleClick.bind(this)}  />
+					<Button text="three" selectedElement={this.state.selectedElement} clickSelected={this.handleClick.bind(this)}  />
+					<Button text="four" selectedElement={this.state.selectedElement} clickSelected={this.handleClick.bind(this)}  />
+				</div>
+			)
+		}
+	}
+
+	class Button extends React.Component{
+		constructor(props){
+			super(props);
+		}
+		render(){
+			var {text, clickSelected, selectedElement} = this.props;
+			var highLight;
+			if(selectedElement == text){
+				highLight = {
+					backgroundColor: 'red'
+				}
+			} 
+
+			return (
+				<button style={highLight} onClick={(e) => {clickSelected(e) }}>{text}</button>
+			)
+		}
+	}
+
+
+
+	ReactDOM.render(
+	    <MyComponent />,
+	    document.getElementById('container')
+	);
+</script>
+</body>
+</html>
