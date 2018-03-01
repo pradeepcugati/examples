@@ -27,7 +27,6 @@ class HeaderNavList extends React.Component{
 		super(props);
 		console.log(props);
 	}
-	
 	render(){
 		var {list} = this.props;
 		return (
@@ -36,7 +35,6 @@ class HeaderNavList extends React.Component{
 					{list.map((item) => 
 						(
 							<li className="nav-item">
-								{/*<a className="nav-link" href={item.url}>{item.text}</a>*/}
 								<Link to={"/poc_expand/src"+item.url} className={"nav-link"}>{item.text}</Link>
 							</li>
 						)
@@ -53,7 +51,6 @@ class ContentLoad extends React.Component{
 		this.state = {
 			data: [],
 		}
-			
 	}
 	componentDidMount(){
 		fetch(this.props.url)
@@ -96,16 +93,14 @@ class CustomCard extends React.Component{
 		var res;
 		if(item.card_type == "group_list") {
 			 res = <CardGroup /> 
-			//res= "hi1";
 		} else if(item.card_type == "v3/filler_big"){
 			res = <CardFiller />
-			//res = "hi2";
 		} else{
 			res = "NoMatch"
 		}
 		return (
 			<div>
-			{res}
+				{res}
 			</div>
 		)
 	}
@@ -158,22 +153,7 @@ class AppHeader extends React.Component{
 		const styleBgImg = {
 			"backgroundImage": "url("+brandImg+")"
 		}
-		 
-		console.log(styleBgImg)
 		return (
-			/*<Router>
-			<div>
-			  <ul>
-			    <li><Link to="/react/">Home</Link></li>
-			    <li><Link to="/react/about">About</Link></li>
-			  </ul>
-
-			  <hr/>
-
-			  <Route exact path="/react/" component={Home}/>
-			  <Route path="/react/about" component={About}/>
-			</div>
-			</Router>*/
 			  <div>
 			  		<nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
 					  <a className="navbar-brand" href="#" style={styleBgImg}></a>
@@ -182,16 +162,6 @@ class AppHeader extends React.Component{
 					  </button>
 					  	<HeaderNavList list={this.state.list}/>
 					</nav>
-				{/*<Router>
-				  	<nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-					  <a className="navbar-brand" href="#" style={styleBgImg}></a>
-					  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					    <span className="navbar-toggler-icon"></span>
-					  </button>
-					  	<HeaderNavList list={this.state.list}/>
-					  	<Route exact path="/poc_expand/src/" component={HomeFeed}/>
-					</nav>
-				</Router>*/}
 			  </div>
 		)
 	}
@@ -200,7 +170,6 @@ class AppHeader extends React.Component{
 const MainRoute = ()=>{
 	return (
 		<div>
-
 			<Route exact path="/poc_expand/src/" component={HomeFeed}/>
 		</div>
 	);
