@@ -6,12 +6,13 @@ import '../scss/example.scss'
 class HomeFeed extends React.Component {
   render() {
     return (
-    	<div>
+    	<div className="container">
       		<ContentLoad url="http://local.examples.com/poc_expand/src/version/v3/feed/home.json" />
 	  	</div>
     )
   }
 }
+
 class About extends React.Component {
   render() {
     return (
@@ -35,7 +36,7 @@ class HeaderNavList extends React.Component{
 					{list.map((item) => 
 						(
 							<li className="nav-item">
-								<Link to={"/poc_expand/src"+item.url} className={"nav-link"}>{item.text}</Link>
+								<Link to={`/poc_expand/src${item.url}`} className={"nav-link"}>{item.text}</Link>
 							</li>
 						)
 					)}
@@ -70,7 +71,7 @@ class ContentLoad extends React.Component{
 			return
 		}
 		return (
-			<div>
+			<div class="card-columns">
 				{
 					this.state.data.map((item,idx) => (
 						<CustomCard item={item} key={idx} />
@@ -81,9 +82,6 @@ class ContentLoad extends React.Component{
 	}
 }
 
-
-
-
 class CustomCard extends React.Component{
 	constructor(props){
 		super(props);
@@ -92,9 +90,11 @@ class CustomCard extends React.Component{
 		let {item} = this.props;
 		var res;
 		if(item.card_type == "group_list") {
-			 res = <CardGroup /> 
+			 res = <CardGroup item={item} /> 
 		} else if(item.card_type == "v3/filler_big"){
-			res = <CardFiller />
+			res = <CardFiller item={item} />
+		} else if(item.card_type == "v3/response"){
+			res = <CardResponse item={item} />
 		} else{
 			res = "NoMatch"
 		}
@@ -106,12 +106,60 @@ class CustomCard extends React.Component{
 	}
 }
 
-class CardGroup extends React.Component{
+class CardResponse extends React.Component{
+	constructor(props){
+		super(props);
+	}
 	render(){
+		let item = this.props.item;
+		let category = this.props.item.category;
+		let categoryImg = category.image;
+		let styleBgImg = {
+			"backgroundImage": "url("+categoryImg+")",
+			"backgroundRepeat": "no-repeat"
+		}
+		console.log(item.teaser_image.preview);
 		return (
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Communities</h5>
+			<div className="card custom-card">
+				<div class="card-block">
+					<h4 className={"card-title "+(item.reason.length == 0) ? "d-none": ""} dangerouslySetInnerHTML={{__html: item.reason}} />
+					<div class="card-img-overlay1" style={styleBgImg}>
+						<img className="card-img-top" src={item.teaser_image.preview} alt="" />
+					</div>
+					<div class="d-flex flex-row custom-nav-dir">
+						<div class="p-2">
+							<a href="#" class="card-link">
+								<img className="img-fluid rounded-circle" src={item.author.image} alt="" />
+							</a>
+						</div>
+						<div class="p-10">
+							<a href="#" class="card-link" dangerouslySetInnerHTML={{__html: item.title}}></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		)
+	}
+}
+
+class CardGroup extends React.Component{
+	constructor(props){
+		super(props);
+	}
+	render(){
+		let item = this.props.item;
+		let groups = item.groups;
+		return (
+			<div className="card">
+				<div class="card-block">
+					<div className="card-body">
+						<h4 className="card-title">Communities</h4>
+					</div>
+					<ul className="list-group list-group-flush">
+						{groups.map((item) => 
+							(<li className="list-group-item">{item.group.name}</li>)
+						)}
+					</ul>
 				</div>
 			</div>
 		)
@@ -119,11 +167,18 @@ class CardGroup extends React.Component{
 }
 
 class CardFiller extends React.Component{
+	constructor(props){
+		super(props);
+	}
 	render(){
+		let {item} = this.props;
 		return (
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Big Filler</h5>
+			<div className="card">
+				<div className="card-block">
+					<img className="card-img-top" src={item.teaser_image.preview} alt="Card image cap" />
+					<div className="card-body">
+						<p className="card-text">{item.title}</p>
+					</div>
 				</div>
 			</div>
 		)
@@ -154,15 +209,15 @@ class AppHeader extends React.Component{
 			"backgroundImage": "url("+brandImg+")"
 		}
 		return (
-			  <div>
-			  		<nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
-					  <a className="navbar-brand" href="#" style={styleBgImg}></a>
-					  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					    <span className="navbar-toggler-icon"></span>
-					  </button>
-					  	<HeaderNavList list={this.state.list}/>
-					</nav>
-			  </div>
+		  	<div>
+		  		<nav className="navbar navbar-expand-lg navbar-light bg-light custom-navbar">
+				  <a className="navbar-brand" href="#" style={styleBgImg}></a>
+				  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				    <span className="navbar-toggler-icon"></span>
+				  </button>
+				  	<HeaderNavList list={this.state.list}/>
+				</nav>
+		  	</div>
 		)
 	}
 }
@@ -170,7 +225,7 @@ class AppHeader extends React.Component{
 const MainRoute = ()=>{
 	return (
 		<div>
-			<Route exact path="/poc_expand/src/" component={HomeFeed}/>
+			<Route path="/poc_expand/src/" component={HomeFeed}/>
 		</div>
 	);
 }
