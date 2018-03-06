@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter as Router, Route, Link, IndexRoute, hashHistory } from 'react-router-dom';
-import '../scss/example.scss'
+import '../scss/cards.scss'
 
 class HomeFeed extends React.Component {
   render() {
@@ -121,21 +121,32 @@ class CardResponse extends React.Component{
 		console.log(item.teaser_image.preview);
 		return (
 			<div className="card custom-card">
-				<div class="card-block">
+				<div className="card-block">
 					<h4 className={"card-title "+(item.reason.length == 0) ? "d-none": ""} dangerouslySetInnerHTML={{__html: item.reason}} />
-					<div class="card-img-overlay1" style={styleBgImg}>
+					<div className="card-img-overlay1" style={styleBgImg}>
 						<img className="card-img-top" src={item.teaser_image.preview} alt="" />
 					</div>
-					<div class="d-flex flex-row custom-nav-dir">
-						<div class="p-2">
-							<a href="#" class="card-link">
-								<img className="img-fluid rounded-circle" src={item.author.image} alt="" />
-							</a>
+					<div className="container">
+						<div className="row custom-card-links align-items-center">
+							<div className="col col-2">
+								<a href="#" className="card-link">
+									<img className="img-fluid rounded-circle" src={item.author.image} alt="" />
+								</a>
+							</div>
+							<div className="col col-10">
+								<a href="#" className="card-link custom-link-detail" dangerouslySetInnerHTML={{__html: item.title}}></a>
+							</div>
 						</div>
-						<div class="p-10">
-							<a href="#" class="card-link" dangerouslySetInnerHTML={{__html: item.title}}></a>
+						<div className="row justify-content-end">
+						    <div className="col-4">
+						      <a href="#" className="custom-icon custom-icon-comment"></a>
+						    </div>
+						    <div className="col-4">
+						      <a href="#" className="custom-icon custom-icon-like"></a>
+						    </div>
 						</div>
 					</div>
+					
 				</div>
 			</div>
 		)
@@ -224,7 +235,7 @@ class AppHeader extends React.Component{
 
 const MainRoute = ()=>{
 	return (
-		<div>
+		<div className="container-area">
 			<Route path="/poc_expand/src/" component={HomeFeed}/>
 		</div>
 	);

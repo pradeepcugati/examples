@@ -1,9 +1,11 @@
-@import "subfile";
+@import "definitions";
 .example {
     h1 {
         color: green;
     }
 }
+
+
 
 .custom-navbar{
 	position: -webkit-sticky;
@@ -22,14 +24,25 @@
 }
 
 .custom-card{
+	a{
+		color: $grey;
+	}
+	.justify-content-end{
+		margin-bottom:10px;
+	}
 	.card-img-overlay1{
 	    background-repeat: no-repeat;
 	    background-size: 40px;
 	    background-position: center center;
 	    min-height: 40px;
+
+	    .card-img-top{
+	    	width:100%;
+	    }
 	}
-	.custom-nav-dir{
-		
+	.custom-card-links{
+		margin-top:10px;
+		margin-bottom:10px;
 	}
 }
 
