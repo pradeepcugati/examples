@@ -1,7 +1,0 @@
-/* 
-    ./.babelrc
-*/  
-{
-    "presets": ["env", "react"]
-}
-
