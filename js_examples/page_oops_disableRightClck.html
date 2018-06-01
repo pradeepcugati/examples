@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+   
+</head>
+<body>
+    <!-- reference for loading data in pagination: https://gist.github.com/shawncampbell/1999001 -->
+    <div class="container">
+        <div id="menudata"></div>
+        <div>
+            <!-- <button class="fwd">fwd</button> -->
+            <div id="showdata"></div>
+            <!-- <button class="back">back</button> -->
+            <div id="btn"></div>
+        </div>
+    </div>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            menudata();
+            loadData();
+        })
+
+
+        
+        var loadData = function(){
+            var url = './pagination.json';
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(resp) {
+                console.log(resp);
+                var liItem;
+                for(item of resp){
+                    liItem = `<div  class='listitem'>
+                                <h2>${item.name}</h2>
+                                <div>${item.username}</div>
+                                </div>`;
+                    $('#showdata').append(liItem)
+                }
+                var liItemLength = $('.listitem').length;
+                var itemsPerPage = 2;
+                var currentPage = 1;
+                var totalPages = Math.ceil(liItemLength / itemsPerPage);
+                var button, t;
+                for(t=0; t < totalPages; t++){
+                    button = `<button>${t+1}</button>`;
+                    $('#btn').append(button)
+                }
+                var page;
+                page = new showPaginatin(1, itemsPerPage);
+                console.log(page);
+                $('#btn').on('click', 'button', function(){
+                    var index = $(this).index() + 1;
+
+                    page = new showPaginatin(index, itemsPerPage)
+                    console.log(page)
+                });
+            })
+            .catch(function(error) {
+                alert("seems error")
+                console.log(error);
+            }); 
+        }
+
+        var menudata = function(){
+            var url = './menu.json';
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(resp) {
+                var res = []
+                var mainmenu = $('<ul class="mainmenu"></ul>');
+                for(menuItem of resp){
+                    var submenu = $('<ul class="submenu"></ul>');;
+                    for(submenuItem of menuItem.submenu){
+                        $(submenu).append(`<li>${submenuItem.submenuItem}</li>`);
+                    }
+                    res.push($(`<li>${menuItem.mainItem}</li>`).append(submenu))
+                }
+                res = $(mainmenu).html(res)
+                $('#menudata').html(res)
+            })
+        }
+
+        $('#menudata').on('mouseenter','li',function(){
+            $(this).find('ul.submenu').show();
+        })
+
+        $('#menudata').on('mouseleave','li',function(){
+            $(this).find('ul.submenu').hide();
+        })
+        
+
+        function showPaginatin(currentPage, itemsPerPage){
+            this.currentPage = currentPage;
+            this.itemsPerPage = itemsPerPage;
+            $('.listitem').hide();
+            var lastIndex = this.currentPage * this.itemsPerPage;
+            var firstIndex = lastIndex - this.itemsPerPage + 1;
+            var showItems = lastIndex - firstIndex;
+            for(var i=firstIndex; i<= lastIndex; i++){
+                $('.listitem').eq(i-1).show();
+            }
+        }
+        $(document).on('contextmenu',function(){
+            return false
+        })
+    </script>
+</body>
+</html>

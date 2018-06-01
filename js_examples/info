@@ -1,0 +1,16 @@
+Function declaration/statement(FD) verses Function Expression (FE)
+    - FD been declared before any statement is created but after statement body is invoked
+    - FE calls function object is created when it gets executed.
+
+    - Hoisting - which gets supported in FD and moves to top of the code
+    - In FE, will throw error if the function obj called before the declaration.
+
+    - FE advantage is that they are IIFE, can be used as closures and can be used as arguments to the other functions
+
+Third Party API
+    The Twitter API, which allows you to do things like displaying your latest tweets on your website.
+    The Google Maps API allows you to do all sorts of things with maps on your web pages (funnily enough, it also powers Google Maps). This is now an entire suite of APIs, which handle a wide variety of tasks, as evidenced by the Google Maps API Picker.
+    The Facebook suite of APIs enables you to use various parts of the Facebook ecosystem to benefit your app, for example by providing app login using Facebook login, accepting in-app payments, rolling out targetted ad campaigns, etc.
+    The YouTube API, which allows you to embed YouTube videos on your site, search YouTube, build playlists, and more.
+    The Twilio API, which provides a framework for building voice and video call functionality into your app, sending SMS/MMS from your apps, and more
+

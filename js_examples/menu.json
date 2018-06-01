@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "mainItem":"Home",
+        "submenu":[
+            {"submenuItem":"sub 1"},
+            {"submenuItem":"sub 2"},
+            {"submenuItem":"sub 3"},
+            {"submenuItem":"sub 4"}]
+    },
+    {
+        "id": 2,
+        "mainItem":"About",
+        "submenu":[
+            {"submenuItem":"sub 1"},
+            {"submenuItem":"sub 2"},
+            {"submenuItem":"sub 3"},
+            {"submenuItem":"sub 4"}]
+    },
+    {
+        "id": 3,
+        "mainItem":"Services",
+        "submenu":[
+            {"submenuItem":"sub 1"},
+            {"submenuItem":"sub 2"},
+            {"submenuItem":"sub 3"},
+            {"submenuItem":"sub 4"}]
+    },
+    {
+        "id": 4,
+        "mainItem":"Support",
+        "submenu":[
+            {"submenuItem":"sub 1"},
+            {"submenuItem":"sub 2"},
+            {"submenuItem":"sub 3"},
+            {"submenuItem":"sub 4"}]
+    },
+    {
+        "id": 5,
+        "mainItem":"Products",
+        "submenu":[
+            {"submenuItem":"sub 1"},
+            {"submenuItem":"sub 2"},
+            {"submenuItem":"sub 3"},
+            {"submenuItem":"sub 4"}]
+    },
+    {
+        "id": 6,
+        "mainItem":"Contact",
+        "submenu":[
+            {"submenuItem":"sub 1"},
+            {"submenuItem":"sub 2"},
+            {"submenuItem":"sub 3"},
+            {"submenuItem":"sub 4"}]
+    }
+]

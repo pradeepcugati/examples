@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+    
+    <!-- reference for loading data in pagination: https://gist.github.com/shawncampbell/1999001 -->
+    <!-- json data: https://jsonplaceholder.typicode.com/ -->
+    <!-- jquery questions: https://www.w3resource.com/jquery-exercises/part1/index.php#EDITOR -->
+    <div class="container">
+        <div id="menudata"></div>
+        <div class="pagination-data">
+            <!-- <button class="fwd">fwd</button> -->
+            <div id="showdata"></div>
+            <!-- <button class="back">back</button> -->
+            <div id="btn"></div>
+        </div>
+        <table class="table_zebra">
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>14<td>
+                <td>15</td>
+                <td>16</td>
+            </tr>
+        </table>
+        <table class="table_zebra_other">
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>14<td>
+                    <td>15</td>
+                    <td>16</td>
+                </tr>
+            </table>
+
+            <p>The row count is <span class="row-count"></span></p>
+            <p>The column count is <span class="column-count"></span></p>
+            <input type="text" id="text_check" maxlength="20">
+            <div id="text_remaining"></div>
+    </div>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            menudata();
+            loadData();
+
+            $('.table_zebra tr td:even').addClass('zebra');
+            $('.table_zebra tr').length
+            $('.table_zebra_other tr:even').addClass('zebra');
+            
+        })
+
+        
+        
+        var loadData = function(){
+            var url = './pagination.json';
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(resp) {
+                console.log(resp);
+                var liItem;
+                for(item of resp){
+                    liItem = `<div  class='listitem'>
+                                <h2>${item.name}</h2>
+                                <div>${item.username}</div>
+                                </div>`;
+                    $('#showdata').append(liItem)
+                }
+                var liItemLength = $('.listitem').length;
+                
+                var itemsPerPage = 4;
+                var currentPage = 1;
+                var totalPages = Math.ceil(liItemLength / itemsPerPage);
+                var button, t;
+                for(t=0; t < totalPages; t++){
+                    button = `<button>${t+1}</button>`;
+                    $('#btn').append(button)
+                }
+                
+                showPaginatin(currentPage, itemsPerPage)
+
+                
+                $('#btn').on('click', 'button', function(){
+                    var index = $(this).index() + 1;
+                    showPaginatin(index, itemsPerPage)
+                });
+            })
+            .catch(function(error) {
+                alert("seems error")
+                console.log(error);
+            }); 
+        }
+
+        var menudata = function(){
+            var url = './menu.json';
+            fetch(url)
+            .then((resp) => resp.json())
+            .then(function(resp) {
+                var res = []
+                var mainmenu = $('<ul class="mainmenu"></ul>');
+                for(menuItem of resp){
+                    var submenu = $('<ul class="submenu"></ul>');;
+                    for(submenuItem of menuItem.submenu){
+                        $(submenu).append(`<li>${submenuItem.submenuItem}</li>`);
+                    }
+                    res.push($(`<li>${menuItem.mainItem}</li>`).append(submenu))
+                }
+                res = $(mainmenu).html(res)
+                $('#menudata').html(res)
+            })
+        }
+
+        $('#menudata').on('mouseenter','li',function(){
+            $(this).find('ul.submenu').show();
+        })
+
+        $('#menudata').on('mouseleave','li',function(){
+            $(this).find('ul.submenu').hide();
+        })
+
+        function showPaginatin(currentPage, itemsPerPage){
+            $('.listitem').hide();
+            var lastIndex = currentPage * itemsPerPage;
+            var firstIndex = lastIndex - itemsPerPage + 1;
+            var showItems = lastIndex - firstIndex;
+            for(var i=firstIndex; i<= lastIndex; i++){
+                $('.listitem').eq(i-1).show();
+            }
+        }
+
+        $('#text_check').on('keyup',function(){
+            var max_length = 20;
+            var value = $(this).val();
+            var text_length = value.length;
+            var text_lenght_remain = max_length - text_length;
+            $('#text_remaining').text(text_lenght_remain)
+        })
+
+        $(document).on('contextmenu',function(){
+            return false
+        })
+    </script>
+</body>
+</html>

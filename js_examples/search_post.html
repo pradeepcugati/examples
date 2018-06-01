@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>The entered text is: <span id="text_output"></span></p>
+    <form action="#">
+        <input type="text" id="text_search">
+    </form>
+    <div id="usersList">
+
+    </div>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script>
+       $(document).ready(function(){
+           var url = './posts.json';
+           fetch(url)
+           .then((resp) => resp.json())
+           .then(function(resp){
+               console.log(resp);
+               var usersList;
+               for(var item of resp){
+                   usersList = `<h2>${item.title}</h2>`
+                   $('#usersList').append(usersList);
+               }
+            })
+       })
+       
+       $("#text_search").keyup(function() {
+            var value = $(this).val().toLowerCase();
+            $('#text_output').text(value)
+            $('#usersList h2').filter(function(){
+                if($(this).text().toLowerCase().indexOf(value) > -1){
+                    $(this).show()
+                } else{
+                    $(this).hide();
+                }
+            })
+        })
+
+
+    </script>
+</body>
+</html>

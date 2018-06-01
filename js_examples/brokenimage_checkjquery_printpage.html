@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <a href="https://www.w3resource.com/images/w3resource-logo.png" alt="w3resource logo" width="150" height="78" onerror='$(this).hide();'/></a> -->
+    <p>
+        Hide the link or image on error
+        <img src="https://www.w3resource.com/images/w3resource-logo1.png" onerror='$(this).hide();'/>
+    </p>
+    <p><a href="#" class="print-page">Print a page</a></p>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="./jquery-3.3.1.min.js"><\/script>')</script> -->
+
+    <script>
+        $(document).ready(function(){
+            $('.print-page').on('click',function(){
+                window.print();
+                return false;
+            })
+        })
+    </script>
+</body>
+</html>
+
+<style>
+
+    layout-style.css which has list of styles has to changed accordingly. 
+    
+    The actual styles are here:
+
+    .md-toolbar.headerTab{
+        min-height: 135px !important; // Remove this
+    }
+    .contentheader div.headerPart{
+        width: 30%;
+        display: inline-block;
+        margin-left: 2%;
+    }
+    .md-toolbar-tools a{
+        display: inline;
+    }
+    .contentheader .logo1 {
+        width: 40%;
+        margin: 0 auto;
+    }
+    .mainContent {
+        width: 100%;
+        padding: 20px 0 15px;
+    }
+    
+    Please change the stylse to :
+
+    .md-toolbar.headerTab {
+        min-height: 110px;
+    }
+    .contentheader{
+        color: #fff;
+        display: inline-block !important;
+        font-size: 25px;
+        line-height: 0rem;
+        margin-left: 0px;
+        height: auto;
+        max-height: inherit;
+    }
+    .contentheader div.headerPart{
+        display: inline-flex;
+        max-height: 100px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .md-toolbar-tools a {
+        max-height: inherit;
+        padding-right: 2%;
+    }
+
+    .contentheader .logo1 {
+        
+        max-height: inherit;
+    }
+
+    .mainContent{
+        width: 100%;
+        padding: 5px 0 15px;
+    }
+    
+</style>
